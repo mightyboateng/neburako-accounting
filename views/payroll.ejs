@@ -1,0 +1,315 @@
+<%- include('partials/header'); -%>
+
+       <div class="payroll-section">
+              <div class="container-fluid">
+                     <div class="row">
+                            <div class="col">
+                                   <div class="container-fluid px-4 pt-4">
+                                          <h5>Payroll</h5>
+                                   </div>
+
+                                   <!-- #####################################################
+                                              Btn for Showing Input field
+                                   ###################################################### -->
+                                   <div class="container-fluid my-2">
+                                          <div class="row">
+                                                 <div class="col-11">
+                                                        <button class="btn btn-secondary add-new">+
+                                                               Add
+                                                               New Employee</button>
+
+
+                                                 </div>
+                                                 <div class="col-1">
+                                                        <button class="btn btn-danger close-form">Close</button>
+                                                 </div>
+
+                                          </div>
+                                   </div>
+
+                                   <!-- ##############################################
+                                                  User input Field
+                                   ################################################ -->
+                                   <div class="user-input">
+
+                                          <div class="container-fluid">
+                                                 <div class="row">
+                                                        <form id="empform" action="/payroll" method="post">
+                                                               <div class="col">
+                                                                      <table class="table table-info">
+                                                                             <thead>
+                                                                                    <tr>
+                                                                                           <th scope="col">Name of Emp
+                                                                                           </th>
+                                                                                           <th scope="col">Staff ID</th>
+                                                                                           <th scope="col">Tin No.</th>
+                                                                                           <th scope="col">Position</th>
+
+                                                                                           <th scope="col">SSF No.</th>
+                                                                                           <th scope="col">Bank and
+                                                                                                  Branch</th>
+                                                                                    </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                                    <tr>
+                                                                                           <div>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="empName"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="staffID"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="tinNumber"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="position"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="ssfNumber"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="bank"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+
+                                                                                           </div>
+                                                                                    </tr>
+                                                                             </tbody>
+                                                                      </table>
+                                                               </div>
+                                                               <div class="col">
+                                                                      <table class="table table-info">
+                                                                             <thead>
+                                                                                    <tr>
+                                                                                           <th scope="col">Bank Account
+                                                                                                  No.</th>
+                                                                                           <th scope="col">Basic Salary
+                                                                                                  (Gh₵)
+                                                                                           </th>
+                                                                                           <th scope="col">Taxable
+                                                                                                  Allowances (Gh₵)</th>
+                                                                                           <th scope="col">Non-Taxable
+                                                                                                  Allowances (Gh₵)</th>
+
+                                                                                           <th scope="col">Total Reliefs
+                                                                                                  (Gh₵)
+                                                                                           </th>
+                                                                                           <th scope="col">Other
+                                                                                                  Deductions (Gh₵)</th>
+                                                                                    </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                                    <tr>
+                                                                                           <div>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="bankAccountNo"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="basicSalary"
+                                                                                                                autocomplete="off"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="taxAllowances"
+                                                                                                                autocomplete="off"
+                                                                                                                value="0">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="nonTaxAllowances"
+                                                                                                                autocomplete="off"
+                                                                                                                value="0">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="totalReliefs"
+                                                                                                                autocomplete="off"
+                                                                                                                value="0">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="otherDeductions"
+                                                                                                                autocomplete="off"
+                                                                                                                value="0">
+                                                                                                  </td>
+                                                                                           </div>
+                                                                                    </tr>
+                                                                             </tbody>
+                                                                      </table>
+                                                               </div>
+                                                               <button type="submit" class="btn btn-success m-2"
+                                                                      onclick="empForm()">Save</button>
+                                                        </form>
+                                                 </div>
+                                          </div>
+                                   </div>
+
+
+                                   <!-- #####################################################
+                                                         Table
+                                   ##################################################### -->
+                                   <div class="payroll-table">
+                                          <div class="container-fluid">
+                                                 <div class="row">
+                                                        <div class="col">
+                                                               <table class="table table-bordered">
+                                                                      <thead>
+
+                                                                             <tr>
+                                                                                    <th scope="col">#</th>
+                                                                                    <th scope="col">Name of Emp</th>
+                                                                                    <th scope="col">Staff ID</th>
+                                                                                    <th scope="col">Tin No.</th>
+                                                                                    <th scope="col">Position</th>
+
+                                                                                    <th scope="col">SSF No.</th>
+                                                                                    <th scope="col">Bank and Branch</th>
+                                                                                    <th scope="col">Bank A/C No.</th>
+                                                                                    <th scope="col">Basic Salary (Gh₵)
+                                                                                    </th>
+                                                                                    <th scope="col">SSF (5.5%) (Gh₵)
+                                                                                    </th>
+
+                                                                                    <th scope="col">Total Taxable
+                                                                                           Allowances (Gh₵)</th>
+                                                                                    <th scope="col">Total Reliefs (Gh₵)
+                                                                                    </th>
+                                                                                    <th scope="col">Taxable Salary (Gh₵)
+                                                                                    </th>
+                                                                                    <th scope="col">Paye (Gh₵)</th>
+                                                                                    <th scope="col">Total Non-Taxable
+                                                                                           Allowances (Gh₵)</th>
+
+                                                                                    <th scope="col">Other Deductions
+                                                                                           (Gh₵)
+                                                                                    </th>
+                                                                                    <th scope="col">Net Salary (Gh₵)
+                                                                                    </th>
+                                                                             </tr>
+                                                                      </thead>
+                                                                      <tbody>
+                                                                             <% for (let i=0; i<EmployeeList.length;
+                                                                                    i++) { %>
+
+                                                                                    <tr>
+                                                                                           <th scope="row">
+                                                                                                  <%= i +1 %>
+                                                                                           </th>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].empName
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].staffID
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].tinNumber
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].position
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].ssfNumber
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].bank
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].bankAccountNo
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmployeeList[i].basicSalary
+                                                                                                         %>
+                                                                                           </td>
+
+
+                                                                                           <!-- /////////////// Calculations Results //////////////// -->
+                                                                                           <td>
+                                                                                                  <%=
+                                                                                                         EmpCalculationList[i].SSF%>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmpCalculationList[i].TaxAllowance
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmpCalculationList[i].TotalReliefs
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%=EmpCalculationList[i].TaxableSalary
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%=EmpCalculationList[i].Payee
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmpCalculationList[i].NonTaxableAllowances
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmpCalculationList[i].OtherDeductions
+                                                                                                         %>
+                                                                                           </td>
+                                                                                           <td>
+                                                                                                  <%= EmpCalculationList[i].NetSalary
+                                                                                                         %>
+                                                                                           </td>
+
+                                                                                    </tr>
+                                                                                    <% } %>
+
+                                                                      </tbody>
+                                                               </table>
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            </div>
+                     </div>
+              </div>
+       </div>
+
+       <%- include('partials/footer'); -%>
