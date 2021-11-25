@@ -11,34 +11,36 @@
                                    <!-- #####################################
                                                                       Table
                                                         ####################################### -->
-                                   <div class="main-content">
+                                   <div class="container main-content">
                                           <table class="table">
                                                  <thead>
                                                         <tr>
                                                                <th scope="col">Employee Name</th>
                                                                <th scope="col">SSF Number</th>
-                                                               <th scope="col">Basic Salary (Gh₵)</th>
-                                                               <th scope="col">Amount (Gh₵)</th>
+                                                               <th scope="col">Basic Salary <br><span
+                                                                             class="currency">(Gh₵)</span></th>
+                                                               <th scope="col">Amount <br><span
+                                                                             class="currency">(Gh₵)</span></th>
                                                         </tr>
                                                  </thead>
                                                  <tbody>
-                                                        <tr>
-                                                               <th scope="row">1</th>
-                                                               <td>Mark</td>
-                                                               <td>Otto</td>
-                                                               <td>@mdo</td>
-                                                        </tr>
-                                                        <tr>
-                                                               <th scope="row">2</th>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-                                                               <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                               <th scope="row">3</th>
-                                                               <td colspan="2">Larry the Bird</td>
-                                                               <td>@twitter</td>
-                                                        </tr>
+                                                        <% for (let i=0; i<EmployeePayrollData.length; i++) { %>
+                                                               <tr>
+                                                                      <th scope="row">
+                                                                             <%= EmployeePayrollData[i].Employee_name %>
+                                                                      </th>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].SSF_account_number
+                                                                                    %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Basic_salary %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Tier1_Returns %>
+                                                                      </td>
+                                                               </tr>
+                                                               <% } %>
                                                  </tbody>
                                           </table>
 

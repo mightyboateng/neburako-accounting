@@ -18,21 +18,22 @@ function resetForm() {
   empForm.rest();
 }
 
-var options = {
-  chart: {
-    type: "bar",
-  },
-  series: [
-    {
-      name: "sales",
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 125],
-    },
-  ],
-  xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-  },
-};
+// ###################### PayRoll Js #####################
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
+function closePayrollForm() {
+  let overlayCover = document.querySelector(".overlay");
+  let payslipForm = document.querySelector(".payroll-form-content");
 
-chart.render();
+  overlayCover.classList.remove("add-overlay");
+  payslipForm.classList.remove("add-form");
+}
+
+// ############### PaySlip Js #######################
+
+function closePayslipForm() {
+  let overlayCover = document.querySelector(".overlay");
+  let payslipForm = document.querySelector(".payslip-form-content");
+
+  overlayCover.classList.remove("add-overlay");
+  payslipForm.classList.remove("add-form");
+}

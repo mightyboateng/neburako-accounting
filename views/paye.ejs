@@ -11,58 +11,61 @@
                                    <!-- #####################################
                                                  Table
                                    ####################################### -->
-                                   <div class="main-content">
+                                   <div class="container main-content">
                                           <table class="table">
                                                  <thead>
                                                         <tr>
                                                                <th scope="col">Employee Name</th>
                                                                <th scope="col">Staff ID</th>
                                                                <th scope="col">Position</th>
-                                                               <th scope="col">Basic Salary (Gh₵)</th>
-                                                               <th scope="col">SSF (5.5%) (Gh₵)</th>
-                                                               <th scope="col">Taxable Allowances (Gh₵)</th>
-                                                               <th scope="col">Tax Reliefs (Gh₵)</th>
-                                                               <th scope="col">Taxable Salary (Gh₵)</th>
-                                                               <th scope="col">Paye (Gh₵)</th>
+                                                               <th scope="col">Basic Salary <br><span
+                                                                             class="currency">(Gh₵)</span> </th>
+                                                               <th scope="col">SSF (5.5%) <br><span
+                                                                             class="currency">(Gh₵)</span></th>
+                                                               <th scope="col">Taxable Allowances <br><span
+                                                                             class="currency">(Gh₵)</span></th>
+                                                               <th scope="col">Tax Reliefs <br><span
+                                                                             class="currency">(Gh₵)</span></th>
+                                                               <th scope="col">Taxable Salary <br><span
+                                                                             class="currency">(Gh₵)</span></th>
+                                                               <th scope="col">Paye <br><span
+                                                                             class="currency">(Gh₵)</span></th>
                                                         </tr>
                                                  </thead>
                                                  <tbody>
-                                                        <tr>
-                                                               <th scope="row">1</th>
-                                                               <td>Mark</td>
-                                                               <td>Otto</td>
-                                                               <td>@mdo</td>
-                                                               <td>Mark</td>
-                                                               <td>Otto</td>
-                                                               <td>@mdo</td>
-                                                               <td>Mark</td>
-                                                               <td>Otto</td>
+                                                        <% for (let i=0; i<EmployeePayrollData.length; i++) { %>
+                                                               <tr>
+                                                                      <th scope="row">
+                                                                             <%= EmployeePayrollData[i].Employee_name %>
+                                                                      </th>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Staff_id %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Position %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Basic_salary %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].SSF %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[i].Total_taxable_allowance
+                                                                                    %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= EmployeePayrollData[i].Total_reliefs %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[i].Taxable_salary %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[i].Payee %>
+                                                                      </td>
+                                                               </tr>
+                                                               <% } %>
 
-                                                        </tr>
-                                                        <tr>
-                                                               <th scope="row">2</th>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-                                                               <td>@fat</td>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-                                                               <td>@fat</td>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                               <th scope="row">3</th>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-                                                               <td>@fat</td>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-                                                               <td>@fat</td>
-                                                               <td>Jacob</td>
-                                                               <td>Thornton</td>
-
-                                                        </tr>
                                                  </tbody>
                                           </table>
 

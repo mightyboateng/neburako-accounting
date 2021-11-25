@@ -9,6 +9,44 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+table,
+th {
+  text-align: center;
+}
+.currency {
+  font-size: 10px;
+}
+
+.search-bar {
+  padding: 0 150px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+.add-overlay {
+  display: block;
+}
+
+.close-form-btn {
+  justify-content: space-between;
+}
+.opened-form-btn {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* ############ Navbar ############# */
 .navbar img {
   width: 40px;
 }
@@ -141,23 +179,13 @@ input[type="number"] {
 .main-content .box .content-info i {
   color: #0d6efd;
 }
-.main-content .graph {
-  background: #f0f3fa;
-  padding: 20px;
-  height: 100%;
-  border: 0.5px solid black;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.main-content .f-height {
+  height: 80%;
 }
 @media only screen and (max-width: 700px) {
   .main-content .graph {
     display: none;
   }
-}
-
-#chart {
-  max-width: 650px;
-  margin: 35px auto;
 }
 
 /* #################### Payroll Styling ################## */
@@ -196,6 +224,53 @@ input[type="number"] {
   .user-input {
     display: none;
   }
+}
+
+.payroll-section .employee-payroll-form .payroll-form-content {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  right: 5%;
+  background: #f3f3f3;
+  width: 80vw;
+  height: 750px;
+  z-index: 2;
+  padding: 20px;
+  transition: 300ms ease-in;
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+}
+.payroll-section .employee-payroll-form .add-form {
+  visibility: visible;
+  opacity: 1;
+  transition: 300ms ease-in;
+}
+
+/* ########## Payslip Styling ######## */
+.payslip-section .employee-payslip-form .payslip-form-content {
+  position: absolute;
+  top: 8%;
+  left: 25%;
+  right: 25%;
+  background: #f3f3f3;
+  width: 800px;
+  height: 750px;
+  z-index: 2;
+  padding: 20px;
+  transition: 300ms ease-in;
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+}
+.payslip-section .employee-payslip-form .add-form {
+  visibility: visible;
+  opacity: 1;
+  transition: 300ms ease-in;
+}
+.payslip-section .employee-payslip-form .payslip-form-view table,
+th {
+  text-align: start;
 }
 
 /* ################### Footer Styling###### */
