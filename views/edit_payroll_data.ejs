@@ -1,0 +1,205 @@
+<%- include('partials/header'); -%>
+
+       <div class="edit-employee-payroll-section">
+              <div class="container-fluid">
+                     <div class="row">
+                            <div class="col">
+
+
+                                   <div class="container-fluid px-4 pt-4">
+                                          <h5>Edit Payroll Data for <%= EditEmployee[0].Employee_name %>
+                                          </h5>
+                                   </div>
+
+
+                                   <!-- ##############################################
+                                                  User input Field
+                                   ################################################ -->
+                                   <div class="edit-payroll-data">
+
+                                          <div class="container">
+                                                 <div class="row">
+                                                        <form id="empform" action="/payroll" method="post">
+                                                               <div class="col">
+                                                                      <table class="table table-info">
+                                                                             <thead>
+                                                                                    <tr>
+                                                                                           <th scope="col">Name
+                                                                                                  of Emp
+                                                                                           </th>
+                                                                                           <th scope="col">Staff
+                                                                                                  ID</th>
+                                                                                           <th scope="col">Tin
+                                                                                                  No.</th>
+                                                                                           <th scope="col">
+                                                                                                  Position</th>
+
+                                                                                           <th scope="col">SSF
+                                                                                                  No.</th>
+                                                                                           <th scope="col">Bank
+                                                                                                  and
+                                                                                                  Branch</th>
+                                                                                    </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                                    <tr>
+                                                                                           <div>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="empName"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Employee_name %>"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="staffID"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Staff_id %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="tinNumber"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Tin_number %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="position"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Position %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="ssfNumber"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].SSF_account_number %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="text"
+                                                                                                                name="bank"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].BankBranch_BankName %>">
+                                                                                                  </td>
+
+                                                                                           </div>
+                                                                                    </tr>
+                                                                             </tbody>
+                                                                      </table>
+                                                               </div>
+                                                               <div class="col">
+                                                                      <table class="table table-info">
+                                                                             <thead>
+                                                                                    <tr>
+                                                                                           <th scope="col">Bank
+                                                                                                  Account
+                                                                                                  No.</th>
+                                                                                           <th scope="col">Basic
+                                                                                                  Salary
+                                                                                                  (Gh₵)
+                                                                                           </th>
+                                                                                           <th scope="col">
+                                                                                                  Taxable
+                                                                                                  Allowances
+                                                                                                  (Gh₵)</th>
+                                                                                           <th scope="col">
+                                                                                                  Non-Taxable
+                                                                                                  Allowances
+                                                                                                  (Gh₵)</th>
+
+                                                                                           <th scope="col">Total
+                                                                                                  Reliefs
+                                                                                                  (Gh₵)
+                                                                                           </th>
+                                                                                           <th scope="col">Other
+                                                                                                  Deductions
+                                                                                                  (Gh₵)</th>
+                                                                                    </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                                    <tr>
+                                                                                           <div>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="bankAccountNo"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Bank_account_number %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="basicSalary"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Basic_salary %>"
+                                                                                                                required>
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="taxAllowances"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Total_taxable_allowance %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="nonTaxAllowances"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Non_taxable_allowance %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="totalReliefs"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Total_reliefs %>">
+                                                                                                  </td>
+                                                                                                  <td>
+
+                                                                                                         <input type="number"
+                                                                                                                name="otherDeductions"
+                                                                                                                autocomplete="off"
+                                                                                                                value="<%= EditEmployee[0].Other_deductions %>">
+                                                                                                  </td>
+                                                                                           </div>
+                                                                                    </tr>
+                                                                             </tbody>
+                                                                      </table>
+                                                               </div>
+
+                                                               <!-- #######################################################
+                                                                             Buttons for Delete and Update
+                                                               ######################################################## -->
+                                                               <div class="row">
+                                                                      <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                             <button type="submit"
+                                                                                    class="btn btn-success m-2"
+                                                                                    name="update"
+                                                                                    value="<%= EditEmployee[0].ID %>"
+                                                                                    onclick=" empForm()">Update
+                                                                                    Employee</button>
+                                                                      </div>
+                                                               </div>
+
+                                                        </form>
+
+                                                        <form action="/delete-employee" method="post">
+                                                               <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                      <button type="submit" class="btn btn-danger m-2"
+                                                                             name="delete"
+                                                                             value="<%= EditEmployee[0].ID %>"
+                                                                             onclick="empForm()">Delete
+                                                                             Employee</button>
+                                                               </div>
+                                                        </form>
+                                                 </div>
+                                          </div>
+                                   </div>
+                                   <%- include('partials/footer'); -%>

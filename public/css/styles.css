@@ -192,28 +192,24 @@ th {
 .user-input {
   position: absolute;
   padding: 10px;
-  margin: 0 15px;
-  background-color: lightblue;
-  border: 1px solid black;
   border-radius: 5px;
   height: auto;
-  width: 100vw;
   overflow-x: scroll;
   transition: all 1s ease-in;
-  visibility: none;
+  visibility: hidden;
   opacity: 0;
 }
 .user-input-active {
-  position: relative;
-  /* transition: all 1s ease-out; */
   visibility: visible;
   opacity: 1;
+  z-index: 5;
 }
 
 .close-form {
   transition: 0.6s;
   visibility: none;
   opacity: 0;
+  z-index: 4;
 }
 .close-form-active {
   transition: 0.6s;
@@ -226,14 +222,18 @@ th {
   }
 }
 
+.payroll-section .payroll-table {
+  z-index: 3;
+}
+
 .payroll-section .employee-payroll-form .payroll-form-content {
   position: absolute;
   top: 8%;
   left: 5%;
   right: 5%;
   background: #f3f3f3;
-  width: 80vw;
-  height: 750px;
+  width: 60vw;
+  height: 650px;
   z-index: 2;
   padding: 20px;
   transition: 300ms ease-in;
@@ -245,6 +245,11 @@ th {
   visibility: visible;
   opacity: 1;
   transition: 300ms ease-in;
+}
+.payroll-section .employee-payroll-form .payroll-form-view table,
+th {
+  text-align: start;
+  height: 70px;
 }
 
 /* ########## Payslip Styling ######## */
@@ -275,7 +280,7 @@ th {
 
 /* ################### Footer Styling###### */
 footer {
+  /* width: 100%; */
+  position: relative;
   width: 100%;
-  position: absolute;
-  bottom: 0;
 }

@@ -95,6 +95,7 @@ app.get("/", function (req, res) {
 
 ///////// PayRoll //////////
 app.get("/payroll", function (req, res) {
+  let employeeFound = [];
   if (req.query.employeeID === undefined) {
   } else {
     connection.query(
@@ -103,7 +104,7 @@ app.get("/payroll", function (req, res) {
         if (err) {
           console.log(err);
         }
-        console.log(EmployeeFound);
+        employeeFound = EmployeeFound;
       }
     );
   }
@@ -118,6 +119,7 @@ app.get("/payroll", function (req, res) {
         OpenPayrollForm: req.query.openPayrollFormCssProperty,
         AddOverlay: req.query.addOverlayCssProperty,
         EmployeePayrollData: PayrollFound,
+        EmployeeDataFound: employeeFound,
       });
     }
   );
@@ -180,8 +182,6 @@ app.post("/payroll", function (req, res) {
     nonTaxableAllowances -
     otherDeductions;
 
-  // Adding Employee Payroll Data to the database table
-  const payroll_sql = "INSERT INTO employee_payroll_data SET ?";
   const employeePayrollDetail = {
     Employee_name: req.body.empName,
     Staff_id: req.body.staffID,
@@ -202,13 +202,34 @@ app.post("/payroll", function (req, res) {
     Net_Salary: fomatter(netSalary),
     Tier1_Returns: fomatter(tier1Amount),
   };
-  connection.query(payroll_sql, employeePayrollDetail, function (err, result) {
-    if (err) {
-      console.log(err);
-    }
-    console.log("1 record add" + result.ID);
-  });
-  console.log(employeePayrollDetail);
+
+  //---- Updating Employee Payroll Data in the database table
+  if (req.body.update) {
+    const id = req.body.update;
+    const update_sql = "UPDATE employee_payroll_data SET ? WHERE id= ?";
+    connection.query(
+      update_sql,
+      [employeePayrollDetail, id],
+      function (err, detailsUpdated) {
+        if (err) throw err;
+        console.log(detailsUpdated);
+      }
+    );
+  }
+  //---- Adding Employee Payroll Data to the database table
+  else {
+    const payroll_sql = "INSERT INTO employee_payroll_data SET ?";
+    connection.query(
+      payroll_sql,
+      employeePayrollDetail,
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        console.log("1 record add" + result.ID);
+      }
+    );
+  }
 
   res.redirect("/payroll");
 });
@@ -227,6 +248,33 @@ app.post("/employee-payroll-details", function (req, res) {
       },
     })
   );
+});
+
+app.post("/edit-employee-payroll-data", function (req, res) {
+  connection.query(
+    "Select * From employee_payroll_data Where ID =" + req.body.empID,
+    function (err, EmployeeFound, fields) {
+      if (err) {
+        console.log(err);
+      }
+      res.render("edit_payroll_data", {
+        page_name: "",
+        EditEmployee: EmployeeFound,
+      });
+    }
+  );
+});
+
+app.post("/delete-employee", function (req, res) {
+  const id = req.body.delete;
+  const delete_sql = "DELETE FROM employee_payroll_data WHERE id = ?";
+  connection.query(delete_sql, id, function (err, detailDeleted) {
+    if (err) throw err;
+
+    console.log("Employee Delected");
+    res.redirect("/payroll");
+  });
+  console.log(req.body);
 });
 
 // ----------------------------------------------------------------------//
