@@ -1,0 +1,48 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+table,
+th,
+td {
+  /* text-align: center; */
+}
+.currency {
+  font-size: 10px;
+}
+
+.search-bar {
+  padding: 0 250px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+.add-overlay {
+  display: block;
+}
+
+.close-form-btn {
+  justify-content: space-between;
+}
+.opened-form-btn {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

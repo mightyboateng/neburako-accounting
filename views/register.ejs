@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="register-section">
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Register</title>
+
+       <link rel="stylesheet" href="/css/styles.css">
+
+       <!-- ####### Bootstrap Social Media Styles -->
+       <link rel="stylesheet" href="css/bootstrap-social.css">
+
+       <!-- Fontawesome Icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+              integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+              crossorigin="anonymous" />
+</head>
+
+<body class="text-center register-content">
+
+       <!-- //////////////////// ////////////////////////////////////////////////
+                            Continue The Intro Sesction
+              //////////////////////////////////////////////////////////////////////////-->
+
+       <section class="container">
+
+              <div class="row error-message text-center w-100 bg-info text-danger">
+                     <div class="col">
+                            <% if (Message) { %>
+                                   <h5>Error <%=Message %>
+                                   </h5>
+                                   <% } %>
+                     </div>
+              </div>
+
+
+              <div class="row content">
+                     <div class="col form-signup">
+                            <form action="/register" method="post">
+                                   <img class="mb-4" src="images/cover.png" alt="" width="72" height="57">
+                                   <h1 class="h3 mb-3 fw-normal">Signing up</h1>
+
+                                   <input class="form-control bottom" name="name" type="text" placeholder="Name"
+                                          required>
+
+                                   <input class="form-control bottom" name="email" type="email"
+                                          placeholder="Email Address" required>
+
+                                   <input class="form-control bottom" type="password" name="password"
+                                          placeholder="Password" required>
+
+                                   <input class="form-control bottom" type="password" name="confirm_password"
+                                          placeholder="Confirm Password" required>
+
+                                   <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                                   <!-- <p class="mt-5 mb-3 text-muted">&copy; Mighty Makers</p> -->
+                            </form>
+                            <hr>
+
+                            <div class="card-body">
+                                   <a class="btn btn-block btn-social btn-google" href="#" role="button">
+                                          <i class="fab fa-google"></i>
+                                          Sign Up with Google
+                                   </a>
+                            </div>
+                     </div>
+              </div>
+       </section>
+
+
+       <!-- ###############################
+                     Bootstrap JS
+       ################################ -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+              crossorigin="anonymous">
+              </script>
+
+       <script src="/index.js"></script>
+
+</body>
+
+</html>

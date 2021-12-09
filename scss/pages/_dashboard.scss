@@ -1,0 +1,38 @@
+/* ###########################################################
+                 Dashboard Styling
+############################################################ */
+.main-content {
+  padding: 20px;
+}
+.main-content .box {
+  background: #f0f3fa;
+  padding: 20px;
+  border: 0.5px solid black;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.main-content .box:hover {
+  border-color: #0d6efd;
+}
+.main-content .box .content-title {
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.main-content .box .content-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.main-content .box .content-info i {
+  color: #0d6efd;
+}
+.main-content .f-height {
+  height: 80%;
+}
+@media only screen and (max-width: 700px) {
+  .main-content .graph {
+    display: none;
+  }
+}

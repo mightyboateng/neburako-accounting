@@ -1,0 +1,104 @@
+/* ############################################################
+                     Navbar 
+################################################################# */
+.navbar img {
+  width: 40px;
+}
+
+.navbar ul li a {
+  color: white;
+}
+.navbar ul li a:hover {
+  color: rgb(186, 181, 181) !important;
+}
+.navbar .active {
+  color: white !important;
+}
+.action {
+  display: none;
+}
+@media only screen and (min-width: 993px) {
+  .action {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 0;
+    margin-right: 20px;
+  }
+}
+.action .profile {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.action .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.action .menu {
+  position: absolute;
+  top: 80px;
+  right: -10px;
+  padding: 10px 20px;
+  background: rgb(221, 221, 221);
+  width: 300px;
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+.action:hover .menu {
+  visibility: visible;
+  opacity: 1;
+}
+.action .menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: rgb(221, 221, 221);
+  transform: rotate(45deg);
+}
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(65, 61, 61);
+  padding: 20px 0;
+  line-height: 1.2em;
+}
+.action .menu h3 span {
+  font-size: 12px;
+  text-transform: capitalize;
+  text-align: center;
+  color: rgb(47, 44, 44);
+  font-weight: 400;
+}
+.action .menu ul li {
+  list-style: none;
+  padding: 10px 0;
+  border-top: 1px solid #0d6efd;
+  display: flex;
+  align-items: center;
+}
+.action .menu ul li i {
+  margin-right: 10px;
+  color: #69b9ef;
+}
+.action .menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+  transition: 0.5s;
+}

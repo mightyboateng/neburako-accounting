@@ -1,0 +1,193 @@
+<%- include('partials/header'); -%>
+
+       <div class="dashboard-section">
+              <div class="container-fluid">
+                     <div class="row">
+                            <div class="col">
+                                   <div class="container-fluid px-4 pt-4">
+                                          <h5>Dashboard</h5>
+                                   </div>
+
+                                   <!-- #####################################
+                                                        Analysis Cards
+                                          ####################################### -->
+                                   <div class="main-content">
+                                          <!-- ###################################################################################
+                                                               First Card
+                                          #################################################################################### -->
+                                          <div class="row">
+                                                 <!-- ##### Total Employees #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box">
+                                                               <div class="content-title">
+                                                                      <h4>Total Employees</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             <%=TotalEmployees %>
+                                                                      </div>
+                                                                      <i class="fas fa-users"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Basic Salary #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Basic Salary</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalBasicSalary %>
+                                                                      </div>
+                                                                      <i class="fas fa-coin"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total SSF #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total SSF</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalSSF %>
+                                                                      </div>
+                                                                      <i class="fas fa-receipt"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Taxable Salary #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Taxable Salary</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalTaxableSalary %>
+                                                                      </div>
+                                                                      <i class="fas fa-money-bill-wave"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Tier 1 Returns #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Tier 1 Returns</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalTier1 %>
+                                                                      </div>
+                                                                      <i class="fas fa-file-invoice-dollar"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Tier 2 Returns #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Tier 2 Returns</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalTier1 %>
+                                                                      </div>
+                                                                      <i class="fas fa-file-invoice"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Paye #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Paye</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalPaye %>
+                                                                      </div>
+                                                                      <i class="fas fa-money-check"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+
+                                                 <!-- ##### Total Net Salary #####-->
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Total Net Salary</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Gh₵ <%= TotalNetSalary %>
+                                                                      </div>
+                                                                      <i class="fas fa-certificate"></i>
+                                                               </div>
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- 
+
+                                          ##########################################################################################
+                                                               Graph Cards
+                                          ###########################################################################################
+                                          <div class="row">
+                                                 ##### Bank Statistics #####
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover">
+                                                               <div class="content-title">
+                                                                      <h4>Banks Stats</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Ghc 33.00
+                                                                      </div>
+                                                                      <i class="fas fa-money-bill-wave"></i>
+                                                               </div>
+
+                                                        </div>
+                                                 </div>
+
+                                                 ##### Employees Position #####
+                                                 <div class="col-lg-6 col-md-6">
+                                                        <div class="box box-hover f-height">
+                                                               <div class="content-title">
+                                                                      <h4>Banks Stats</h4>
+                                                               </div>
+                                                               <div class="content-info">
+                                                                      <div class="content-info-conter">
+                                                                             Ghc 33.00
+                                                                      </div>
+                                                                      <i class="fas fa-money-bill-wave"></i>
+                                                               </div>
+
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          ############################################################################
+                                                        Second Card
+                                          #############################################################################
+                                   -->
+
+                                   </div>
+
+                            </div>
+                     </div>
+              </div>
+       </div>
+
+
+
+       <%- include('partials/footer'); -%>

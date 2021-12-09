@@ -1,10 +1,8 @@
 // ####### Profile ########## //
 let toggleMenu = document.querySelector(".user-input");
-// let overCover = document.querySelector(".overlay");
 
 let addBtn = document.querySelector(".add-new");
 addBtn.addEventListener("click", function () {
-  // overCover.classList.add("add-overlay");
   toggleMenu.classList.add("user-input-active");
   closeForm.classList.add("close-form-active");
 });

@@ -1,0 +1,31 @@
+@use "../components/mixins" as *;
+
+.error-message {
+  //   width: 100%;
+  max-width: 330px;
+  margin: auto;
+}
+
+.register-content {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: url(../images/flat-business.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.form-signup {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  @include gradient;
+}
+
+.bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

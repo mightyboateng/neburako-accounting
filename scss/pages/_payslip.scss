@@ -1,0 +1,36 @@
+/* ##################################################### 
+              Payslip Styling 
+########################################################### */
+.payslip-section .employee-payslip-form .payslip-form-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f3f3f3;
+  width: 1000px;
+  height: 750px;
+  z-index: 2;
+  padding: 20px;
+  transition: 300ms ease-in;
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  overflow-x: scroll;
+}
+.payslip-section .employee-payslip-form .add-form {
+  visibility: visible;
+  opacity: 1;
+  transition: 300ms ease-in;
+}
+.payslip-section .employee-payslip-form .payslip-form-view table,
+th {
+  text-align: start;
+}
+.payslip-section .employee-payroll-form .payslip-form-view .print-form-btn {
+  position: absolute;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background: blue;
+  bottom: 0;
+  right: 0;
+}

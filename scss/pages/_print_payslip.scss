@@ -1,0 +1,48 @@
+/* ####################################################################
+            Print Payslip Styling
+###################################################################### */
+.page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+.page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+  overflow: hidden;
+}
+.bb {
+  border-bottom: 1px solid #0d6efd;
+}
+/* Section 1*/
+.top-content {
+  padding-bottom: 10px;
+}
+.logo img {
+  height: 60px;
+}
+/* Section 2 */
+.company-info table th,
+td {
+  text-align: start;
+}
+.company-heading {
+  font-size: 20px;
+  color: darkcyan;
+}
+.company-subheading {
+  font-weight: 500;
+}
+.company-content {
+  text-align: end;
+}
+/* Section 3 */
+.list-area thead {
+  color: white;
+  background: #0d6efd;
+}
+.list-area th,
+td {
+  text-align: start;
+}

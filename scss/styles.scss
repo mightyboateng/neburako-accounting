@@ -1,0 +1,17 @@
+@use "custom";
+
+// Importing Components
+@use "components/mixins";
+@use "components/typography";
+
+// Importing Pages Styles
+@use "pages/company_details";
+@use "pages/register";
+@use "pages/every";
+@use "pages/nav";
+@use "pages/home";
+@use "pages/dashboard";
+@use "pages/payroll";
+@use "pages/payslip";
+@use "pages/print_payslip";
+@use "pages/footer";

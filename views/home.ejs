@@ -1,193 +1,129 @@
-<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html lang="en">
 
-       <div class="dashboard-section">
-              <div class="container-fluid">
-                     <div class="row">
-                            <div class="col">
-                                   <div class="container-fluid px-4 pt-4">
-                                          <h5>Dashboard</h5>
-                                   </div>
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Home</title>
 
-                                   <!-- #####################################
-                                                        Analysis Cards
-                                          ####################################### -->
-                                   <div class="main-content">
-                                          <!-- ###################################################################################
-                                                               First Card
-                                          #################################################################################### -->
-                                          <div class="row">
-                                                 <!-- ##### Total Employees #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box">
-                                                               <div class="content-title">
-                                                                      <h4>Total Employees</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             <%=TotalEmployees %>
-                                                                      </div>
-                                                                      <i class="fas fa-users"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+       <link rel="stylesheet" href="/css/styles.css">
 
-                                                 <!-- ##### Total Basic Salary #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Basic Salary</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalBasicSalary %>
-                                                                      </div>
-                                                                      <i class="fas fa-coin"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+       <!-- ####### Bootstrap Social Media Styles -->
+       <link rel="stylesheet" href="css/bootstrap-social.css">
 
-                                                 <!-- ##### Total SSF #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total SSF</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalSSF %>
-                                                                      </div>
-                                                                      <i class="fas fa-receipt"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+       <!-- Fontawesome Icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+              integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+              crossorigin="anonymous" />
+</head>
 
-                                                 <!-- ##### Total Taxable Salary #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Taxable Salary</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalTaxableSalary %>
-                                                                      </div>
-                                                                      <i class="fas fa-money-bill-wave"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+<body class="home-section">
 
-                                                 <!-- ##### Total Tier 1 Returns #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Tier 1 Returns</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalTier1 %>
-                                                                      </div>
-                                                                      <i class="fas fa-file-invoice-dollar"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+       <!-- //////////////////// ////////////////////////////////////////////////
+                            Start The NavBar Sesction
+              //////////////////////////////////////////////////////////////////////////-->
+       <nav class="navbar navbar-expand-lg navbar-dark menu shadow fixed-top bg-white">
 
-                                                 <!-- ##### Total Tier 2 Returns #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Tier 2 Returns</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalTier1 %>
-                                                                      </div>
-                                                                      <i class="fas fa-file-invoice"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+              <div class="container">
+                     <a class="navbar-brand" href="#">
+                            <img class="logo" src="/images/cover.png" alt="Logo">
+                     </a>
 
-                                                 <!-- ##### Total Paye #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Paye</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalPaye %>
-                                                                      </div>
-                                                                      <i class="fas fa-money-check"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                     </button>
 
-                                                 <!-- ##### Total Net Salary #####-->
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Total Net Salary</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Gh₵ <%= TotalNetSalary %>
-                                                                      </div>
-                                                                      <i class="fas fa-certificate"></i>
-                                                               </div>
-                                                        </div>
-                                                 </div>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                   <li class="nav-item">
+                                          <a class="nav-link" aria-current="page" href="#">Home</a>
+                                   </li>
+                                   <li class="nav-item">
+                                          <a class="nav-link" href="#">Services</a>
+                                   </li>
+                                   <li class="nav-item">
+                                          <a class="nav-link" href="#">Portfolio</a>
+                                   </li>
+                                   <li class="nav-item">
+                                          <a class="nav-link" href="#">Contact</a>
+                                   </li>
+                            </ul>
+                     </div>
+              </div>
+       </nav>
+
+
+       <!-- //////////////////// ////////////////////////////////////////////////
+                            Continue Sesction
+              //////////////////////////////////////////////////////////////////////////-->
+       <section id="home" class="intro-section">
+
+              <div class="container">
+                     <div class="row align-items-center text-white">
+                            <!-- Start Content for Intro -->
+                            <div class="col-md-6 intros">
+                                   <h1 class="display-2">
+                                          <span class="display-2--intro">EBURAKO PAYROLL SOLUTIONS</span>
+                                          <span class="display-2--description lh-base">
+                                                 This is a multi-purpose responsive layout created with bootstrap v5.
+                                                 With the help of freecodecamp, I design this web application.
+                                          </span>
+                                   </h1>
+                                   <a href="/register">
+                                          <button type="button" class="rounded-pill btn-rounded text-primary"> Sign up
+                                                 here
+                                                 <span>
+                                                        <i class="fas fa-arrow-right"></i>
+                                                 </span>
+                                          </button>
+
+                                   </a>
+
+                            </div>
+                            <!-- ################## Login Side ############## -->
+                            <div class="col-md-6 intros pt-2">
+                                   <div class="login-box">
+                                          <form action="/" method="post">
+                                                 <input class="form-control bottom" name="email" type="email"
+                                                        placeholder="Email Address" required>
+
+                                                 <input class="form-control bottom" type="password" name="password"
+                                                        placeholder="Password" required>
+
+                                                 <button class="w-100 btn btn-lg bg-primary text-white"
+                                                        type="submit">Login</button>
+                                          </form>
+                                          <hr>
+
+                                          <div class="card-body">
+                                                 <a class="btn w-100 text-center btn-social btn-google" href="#"
+                                                        role="button">
+                                                        <i class="fab fa-google"></i>
+                                                        Login with Google
+                                                 </a>
                                           </div>
-
-                                          <!-- 
-
-                                          ##########################################################################################
-                                                               Graph Cards
-                                          ###########################################################################################
-                                          <div class="row">
-                                                 ##### Bank Statistics #####
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover">
-                                                               <div class="content-title">
-                                                                      <h4>Banks Stats</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Ghc 33.00
-                                                                      </div>
-                                                                      <i class="fas fa-money-bill-wave"></i>
-                                                               </div>
-
-                                                        </div>
-                                                 </div>
-
-                                                 ##### Employees Position #####
-                                                 <div class="col-lg-6 col-md-6">
-                                                        <div class="box box-hover f-height">
-                                                               <div class="content-title">
-                                                                      <h4>Banks Stats</h4>
-                                                               </div>
-                                                               <div class="content-info">
-                                                                      <div class="content-info-conter">
-                                                                             Ghc 33.00
-                                                                      </div>
-                                                                      <i class="fas fa-money-bill-wave"></i>
-                                                               </div>
-
-                                                        </div>
-                                                 </div>
-                                          </div>
-
-                                          ############################################################################
-                                                        Second Card
-                                          #############################################################################
-                                   -->
-
                                    </div>
-
                             </div>
                      </div>
               </div>
-       </div>
+       </section>
 
 
 
-       <%- include('partials/footer'); -%>
+
+       <!-- ###############################
+                     Bootstrap JS
+       ################################ -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+              crossorigin="anonymous">
+              </script>
+
+       <script src="/index.js"></script>
+
+</body>
+
+</html>

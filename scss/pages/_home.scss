@@ -1,0 +1,80 @@
+@use "../components/mixins" as *;
+
+.home-section {
+  //############### Home Navbar ###############
+  .menu {
+    li {
+      padding: 0 0.7rem;
+
+      a {
+        color: black !important;
+        text-transform: capitalize;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // ######## Buttons ############
+  .btn-rounded {
+    //   @include media-breakpoint-down(sm) {
+
+    //     display: none;
+    //   }
+    position: relative;
+    padding: 0.9375rem 4.375rem 0.9375rem 1.2rem;
+    font-weight: 700;
+    margin-right: 0.185rem;
+    border: 0.1rem solid rgba(#0d6efd, 0.6);
+    background: white;
+    color: white;
+
+    span {
+      position: absolute;
+      background: blue;
+      width: 2.5rem;
+      height: 2.5rem;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+
+      i {
+        color: white;
+        line-height: 2.5rem;
+        font-size: 1rem;
+      }
+    }
+
+    &:hover {
+      color: white;
+
+      span {
+        background: rgba(black, 0.6);
+      }
+    }
+  }
+
+  // ######## Introduction Section ###################
+  .intro-section {
+    background: url("../images/workplace-office.jpg") no-repeat;
+    background-size: cover;
+    padding: 10rem 0 0 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .intros {
+    .login-box {
+      position: relative;
+      a {
+        // @include absoluteCenter;
+        span {
+          i {
+            font-size: 6rem;
+            color: blue;
+          }
+        }
+      }
+    }
+  }
+}
