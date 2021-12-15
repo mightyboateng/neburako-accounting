@@ -46,3 +46,18 @@ td {
   bottom: 0;
   right: 0;
 }
+
+.no-data {
+  margin-top: 20px;
+  position: relative;
+  background: red;
+
+  img {
+    width: 30%;
+    height: 400px;
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    // bottom: 50%;
+  }
+}

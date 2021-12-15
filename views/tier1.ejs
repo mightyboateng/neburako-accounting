@@ -8,43 +8,61 @@
                                           <h5>Tier 1 Returns</h5>
                                    </div>
 
-                                   <!-- #####################################
-                                                                      Table
-                                                        ####################################### -->
-                                   <div class="container main-content">
-                                          <table class="table">
-                                                 <thead>
-                                                        <tr>
-                                                               <th scope="col">Employee Name</th>
-                                                               <th scope="col">SSF Number</th>
-                                                               <th scope="col">Basic Salary <br><span
-                                                                             class="currency">(Gh₵)</span></th>
-                                                               <th scope="col">Amount <br><span
-                                                                             class="currency">(Gh₵)</span></th>
-                                                        </tr>
-                                                 </thead>
-                                                 <tbody>
-                                                        <% for (let i=0; i<EmployeePayrollData.length; i++) { %>
-                                                               <tr>
-                                                                      <th scope="row">
-                                                                             <%= EmployeePayrollData[i].Employee_name %>
-                                                                      </th>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].SSF_account_number
-                                                                                    %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].Basic_salary %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].Tier1_Returns %>
-                                                                      </td>
-                                                               </tr>
-                                                               <% } %>
-                                                 </tbody>
-                                          </table>
+                                   <% if(EmployeePayrollData.length===0) { %>
+                                          <div class="container no-data">
+                                                 <div class="row  ">
+                                                        <div class="col-lg-12">
+                                                               <img src="/images/cover.png" alt="No data image">
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                          <%} else {%>
 
-                                   </div>
+                                                 <!-- #####################################
+                                                                      Table
+                                                 ####################################### -->
+                                                 <div class="container main-content">
+                                                        <table class="table">
+                                                               <thead>
+                                                                      <tr>
+                                                                             <th scope="col">Employee Name</th>
+                                                                             <th scope="col">SSF Number</th>
+                                                                             <th scope="col">Basic Salary <br><span
+                                                                                           class="currency">(Gh₵)</span>
+                                                                             </th>
+                                                                             <th scope="col">Amount <br><span
+                                                                                           class="currency">(Gh₵)</span>
+                                                                             </th>
+                                                                      </tr>
+                                                               </thead>
+                                                               <tbody>
+                                                                      <% for (let i=0; i<EmployeePayrollData.length;
+                                                                             i++) { %>
+                                                                             <tr>
+                                                                                    <th scope="row">
+                                                                                           <%= EmployeePayrollData[i].Employee_name
+                                                                                                  %>
+                                                                                    </th>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].SSF_account_number
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].Basic_salary
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].Tier1_Returns
+                                                                                                  %>
+                                                                                    </td>
+                                                                             </tr>
+                                                                             <% } %>
+                                                               </tbody>
+                                                        </table>
+
+                                                 </div>
+
+                                                 <%}%>
 
                             </div>
                      </div>

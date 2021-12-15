@@ -1,9 +1,9 @@
 const connection = require("./database");
 const fomatter = require("./controllers");
+const authenticated = require("./home");
 
 module.exports = function (dashboard) {
-  //////// Home Route ////////
-  dashboard.get("/dashboard", function (req, res) {
+  dashboard.get("/dashboard", authenticated.checkAuthenticated, (req, res) => {
     connection.query(
       "Select * From employee_payroll_data",
       function (err, EmployeePayrollResult, fields) {

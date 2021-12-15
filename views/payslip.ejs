@@ -23,270 +23,303 @@
                                           </form>
                                    </div>
 
-
-                                   <!-- #####################################
-                                                        Table
-                                          ####################################### -->
-                                   <div class="container main-content">
-                                          <table class="table">
-                                                 <thead>
-                                                        <tr>
-                                                               <th scope="col">Employee Name</th>
-                                                               <th scope="col">Staff ID</th>
-                                                               <th scope="col">Tin Number</th>
-                                                               <th scope="col">Position</th>
-                                                               <th scope="col">SSF Number</th>
-                                                               <th scope="col">Bank & Branch</th>
-                                                        </tr>
-                                                 </thead>
-
-                                                 <tbody>
-                                                        <% for (let i=0; i<EmployeePayrollData.length; i++) { %>
-                                                               <tr>
-                                                                      <th scope="row">
-                                                                             <%= EmployeePayrollData[i].Employee_name %>
-                                                                      </th>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].Staff_id %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].Tin_number %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].Position %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].SSF %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <%= EmployeePayrollData[i].BankBranch_BankName
-                                                                                    %>
-                                                                      </td>
-                                                                      <td>
-                                                                             <form action="/employee-payslip-detalis"
-                                                                                    method="post">
-                                                                                    <button class="btn btn-info text-white"
-                                                                                           name="empID"
-                                                                                           value="<%= EmployeePayrollData[i].ID %>">View
-                                                                                           Employee</button>
-                                                                             </form>
-                                                                      </td>
-
-                                                               </tr>
-                                                               <% } %>
-                                                 </tbody>
-                                          </table>
-                                   </div>
-
-                                   <!-- ///////////////////////////////////////////////////////////////////////////
-                                                   Details of Payslip Form
-                                   /////////////////////////////////////////////////////////////////////////////// -->
-                                   <div class="cotainer employee-payslip-form">
-                                          <% EmployeePayslip.forEach(employee=> { %>
-                                                 <div class="container payslip-form-content <%=OpenPaySlipForm %>">
-                                                        <!-- ################ 
-                                                         Close Button
-                                                        ####################### -->
-                                                        <div class="row">
-                                                               <div class="col d-flex close-form-btn">
-                                                                      <h5> Payslip for
-                                                                             <%=EmployeePayslip[0].Employee_name %>
-                                                                      </h5>
-                                                                      <button class="btn btn-danger payslip-form-btn"
-                                                                             onclick="closePayslipForm()">Close</button>
-                                                               </div>
-                                                        </div>
-                                                        <hr>
-                                                        <!-- ####################################################
-                                                         More information about the Selected Employee
-                                                        ####################################################### -->
-                                                        <div class="row payslip-form-view">
-                                                               <div class="col">
-
-                                                                      <div>
-                                                                             <table class="table">
-                                                                                    <tbody>
-                                                                                           <tr>
-                                                                                                  <th scope="row">
-                                                                                                         Employee
-                                                                                                         Name
-                                                                                                  </th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Employee_name
-                                                                                                                %>
-                                                                                                  </td>
-
-                                                                                                  <th scope="row">
-                                                                                                         Position
-                                                                                                  </th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Position
-                                                                                                                %>
-                                                                                                  </td>
-
-                                                                                                  <th scope="row">
-                                                                                                         Staff
-                                                                                                         Id</th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].SSF_account_number
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <th scope="row">
-                                                                                                         Tin
-                                                                                                         Number
-                                                                                                  </th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Tin_number
-                                                                                                                %>
-                                                                                                  </td>
-
-                                                                                                  <th scope="row">
-                                                                                                         Bank
-                                                                                                         Name
-                                                                                                  </th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].BankBranch_BankName
-                                                                                                                %>
-                                                                                                  </td>
-
-                                                                                                  <th scope="row">
-                                                                                                         Bank
-                                                                                                         Account
-                                                                                                  </th>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Bank_account_number
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </div>
-
-                                                                      <div>
-                                                                             <table class="table">
-                                                                                    <tbody>
-                                                                                           <!-- ##################
-                                                                                                  Earnings
-                                                                                           ######################### -->
-                                                                                           <tr>
-                                                                                                  <th> Earnings
-                                                                                                  </th>
-                                                                                                  <th>Amount
-                                                                                                         (Gh₵)
-                                                                                                  </th>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>Basic
-                                                                                                         Salary
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Basic_salary
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>Taxable
-                                                                                                         Allowance
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Total_taxable_allowance
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>Non Taxable
-                                                                                                         Allowance
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Non_taxable_allowance
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <th>Total
-                                                                                                         Earnings
-                                                                                                  </th>
-                                                                                                  <th>
-                                                                                                         <%= TotalEarns
-                                                                                                                %>
-                                                                                                  </th>
-
-                                                                                           </tr>
-
-                                                                                           <!-- ########################
-                                                                                                  Deductions
-                                                                                           ########################## -->
-                                                                                           <tr>
-                                                                                                  <th>Deductions
-                                                                                                  </th>
-                                                                                                  <th>Amount
-                                                                                                         (Gh₵)
-                                                                                                  </th>
-
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>Paye Income
-                                                                                                         Tax
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Payee
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>SSF(5.5%)
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].SSF
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <td>Other
-                                                                                                         deductions
-                                                                                                  </td>
-                                                                                                  <td>
-                                                                                                         <%=EmployeePayslip[0].Other_deductions
-                                                                                                                %>
-                                                                                                  </td>
-                                                                                           </tr>
-                                                                                           <tr>
-                                                                                                  <th>Total
-                                                                                                         Deductions
-                                                                                                  </th>
-                                                                                                  <th>
-                                                                                                         <%= TotalDeducts
-                                                                                                                %>
-                                                                                                  </th>
-                                                                                           </tr>
-
-                                                                                           <tr>
-                                                                                                  <th>Net Pay
-                                                                                                         (Gh₵)
-                                                                                                  </th>
-                                                                                                  <th>
-                                                                                                         <%= NetPay %>
-                                                                                                  </th>
-                                                                                           </tr>
-                                                                                    </tbody>
-                                                                             </table>
-                                                                      </div>
-
-                                                                      <form action="/payslip" method="post">
-                                                                             <div class="d-flex print-form-btn">
-                                                                                    <button type="submit" name="printme"
-                                                                                           value="<%=EmployeePayslip[0].ID%>"
-                                                                                           class="btn btn-success">Print
-                                                                                           Info</button>
-                                                                             </div>
-                                                                      </form>
-                                                               </div>
+                                   <% if(EmployeePayrollData.length===0) { %>
+                                          <div class="container no-data">
+                                                 <div class="row  ">
+                                                        <div class="col-lg-12">
+                                                               <img src="/images/cover.png" alt="No data image">
                                                         </div>
                                                  </div>
-                                                 <% }) %>
-                                   </div>
+                                          </div>
+                                          <%} else {%>
+
+
+                                                 <!-- #####################################
+                                                        Table
+                                                 ####################################### -->
+                                                 <div class="container main-content">
+                                                        <table class="table">
+                                                               <thead>
+                                                                      <tr>
+                                                                             <th scope="col">Employee Name</th>
+                                                                             <th scope="col">Staff ID</th>
+                                                                             <th scope="col">Tin Number</th>
+                                                                             <th scope="col">Position</th>
+                                                                             <th scope="col">SSF Number</th>
+                                                                             <th scope="col">Bank & Branch</th>
+                                                                      </tr>
+                                                               </thead>
+
+                                                               <tbody>
+                                                                      <% for (let i=0; i<EmployeePayrollData.length;
+                                                                             i++) { %>
+                                                                             <tr>
+                                                                                    <th scope="row">
+                                                                                           <%= EmployeePayrollData[i].Employee_name
+                                                                                                  %>
+                                                                                    </th>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].Staff_id
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].Tin_number
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].Position
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].SSF
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <%= EmployeePayrollData[i].BankBranch_BankName
+                                                                                                  %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                           <form action="/employee-payslip-detalis"
+                                                                                                  method="post">
+                                                                                                  <button class="btn btn-info text-white"
+                                                                                                         name="empID"
+                                                                                                         value="<%= EmployeePayrollData[i].ID %>">View
+                                                                                                         Employee</button>
+                                                                                           </form>
+                                                                                    </td>
+
+                                                                             </tr>
+                                                                             <% } %>
+                                                               </tbody>
+                                                        </table>
+                                                 </div>
+
+                                                 <%}%>
+
+                                                        <!-- ///////////////////////////////////////////////////////////////////////////
+                                                   Details of Payslip Form
+                                   /////////////////////////////////////////////////////////////////////////////// -->
+                                                        <div class="cotainer employee-payslip-form">
+                                                               <% EmployeePayslip.forEach(employee=> { %>
+                                                                      <div
+                                                                             class="container payslip-form-content <%=OpenPaySlipForm %>">
+                                                                             <!-- ################ 
+                                                         Close Button
+                                                        ####################### -->
+                                                                             <div class="row">
+                                                                                    <div
+                                                                                           class="col d-flex close-form-btn">
+                                                                                           <h5> Payslip for
+                                                                                                  <%=EmployeePayslip[0].Employee_name
+                                                                                                         %>
+                                                                                           </h5>
+                                                                                           <button class="btn btn-danger payslip-form-btn"
+                                                                                                  onclick="closePayslipForm()">Close</button>
+                                                                                    </div>
+                                                                             </div>
+                                                                             <hr>
+                                                                             <!-- ####################################################
+                                                         More information about the Selected Employee
+                                                        ####################################################### -->
+                                                                             <div class="row payslip-form-view">
+                                                                                    <div class="col">
+
+                                                                                           <div>
+                                                                                                  <table class="table">
+                                                                                                         <tbody>
+                                                                                                                <tr>
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Employee
+                                                                                                                              Name
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Employee_name
+                                                                                                                                     %>
+                                                                                                                       </td>
+
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Position
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Position
+                                                                                                                                     %>
+                                                                                                                       </td>
+
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Staff
+                                                                                                                              Id
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].SSF_account_number
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Tin
+                                                                                                                              Number
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Tin_number
+                                                                                                                                     %>
+                                                                                                                       </td>
+
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Bank
+                                                                                                                              Name
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].BankBranch_BankName
+                                                                                                                                     %>
+                                                                                                                       </td>
+
+                                                                                                                       <th
+                                                                                                                              scope="row">
+                                                                                                                              Bank
+                                                                                                                              Account
+                                                                                                                       </th>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Bank_account_number
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                         </tbody>
+                                                                                                  </table>
+                                                                                           </div>
+
+                                                                                           <div>
+                                                                                                  <table class="table">
+                                                                                                         <tbody>
+                                                                                                                <!-- ##################
+                                                                                                  Earnings
+                                                                                           ######################### -->
+                                                                                                                <tr>
+                                                                                                                       <th> Earnings
+                                                                                                                       </th>
+                                                                                                                       <th>Amount
+                                                                                                                              (Gh₵)
+                                                                                                                       </th>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>Basic
+                                                                                                                              Salary
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Basic_salary
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>Taxable
+                                                                                                                              Allowance
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Total_taxable_allowance
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>Non Taxable
+                                                                                                                              Allowance
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Non_taxable_allowance
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <th>Total
+                                                                                                                              Earnings
+                                                                                                                       </th>
+                                                                                                                       <th>
+                                                                                                                              <%= TotalEarns
+                                                                                                                                     %>
+                                                                                                                       </th>
+
+                                                                                                                </tr>
+
+                                                                                                                <!-- ########################
+                                                                                                  Deductions
+                                                                                           ########################## -->
+                                                                                                                <tr>
+                                                                                                                       <th>Deductions
+                                                                                                                       </th>
+                                                                                                                       <th>Amount
+                                                                                                                              (Gh₵)
+                                                                                                                       </th>
+
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>Paye
+                                                                                                                              Income
+                                                                                                                              Tax
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Payee
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>SSF(5.5%)
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].SSF
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <td>Other
+                                                                                                                              deductions
+                                                                                                                       </td>
+                                                                                                                       <td>
+                                                                                                                              <%=EmployeePayslip[0].Other_deductions
+                                                                                                                                     %>
+                                                                                                                       </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                       <th>Total
+                                                                                                                              Deductions
+                                                                                                                       </th>
+                                                                                                                       <th>
+                                                                                                                              <%= TotalDeducts
+                                                                                                                                     %>
+                                                                                                                       </th>
+                                                                                                                </tr>
+
+                                                                                                                <tr>
+                                                                                                                       <th>Net Pay
+                                                                                                                              (Gh₵)
+                                                                                                                       </th>
+                                                                                                                       <th>
+                                                                                                                              <%= NetPay
+                                                                                                                                     %>
+                                                                                                                       </th>
+                                                                                                                </tr>
+                                                                                                         </tbody>
+                                                                                                  </table>
+                                                                                           </div>
+
+                                                                                           <form action="/payslip"
+                                                                                                  method="post">
+                                                                                                  <div
+                                                                                                         class="d-flex print-form-btn">
+                                                                                                         <button type="submit"
+                                                                                                                name="printme"
+                                                                                                                value="<%=EmployeePayslip[0].ID%>"
+                                                                                                                class="btn btn-success">Print
+                                                                                                                Info</button>
+                                                                                                  </div>
+                                                                                           </form>
+                                                                                    </div>
+                                                                             </div>
+                                                                      </div>
+                                                                      <% }) %>
+                                                        </div>
 
                             </div>
                      </div>
