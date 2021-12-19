@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 const checkNotAuth = require("./home");
 
+let userLogIn;
 passport.use(
   new LocalStrategy({ usernameField: "email" }, function (
     email,
@@ -15,6 +16,7 @@ passport.use(
     const user = email;
     try {
       const check_email_sql = "SELECT email FROM user_login WHERE email= ?";
+      userLogIn = email;
 
       connection.query(check_email_sql, user, (err, foundEmail) => {
         if (err) throw err;
@@ -79,10 +81,6 @@ exports.home = function (home) {
     req.logOut();
     res.redirect("/");
   });
-};
-
-exports.getLoginUserId = function () {
-  return loginUserid;
 };
 
 exports.checkAuthenticated = function (req, res, next) {

@@ -9,7 +9,7 @@ exports.register = function (register) {
     .get(checkNotAuthenticated.checkNotAuthenticated, (req, res) => {
       res.render("register", { Message: "" });
     })
-    .post(checkNotAuthenticated.checkAuthenticated, (req, res) => {
+    .post((req, res) => {
       const { name, email, password, confirm_password } = req.body;
       userEmail = email;
 
@@ -52,6 +52,6 @@ exports.register = function (register) {
     });
 };
 
-exports.getRegisterUser = function () {
+exports.getRegisteredUser = function () {
   return userEmail;
 };

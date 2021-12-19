@@ -1,12 +1,7 @@
 const connection = require("./database");
 const fomatter = require("./controllers");
 const url = require("url");
-
-const getLoginUserId = require("./home");
-const getRegisterUserId = require("./register");
-
 const authenticated = require("./home");
-const { authenticate } = require("passport");
 
 let payeeTax;
 
@@ -29,21 +24,28 @@ module.exports = function (payroll) {
           }
         );
       }
-      connection.query(
-        "Select * From employee_payroll_data",
-        function (err, PayrollFound, fields) {
-          if (err) {
-            console.log(err);
+      const sql_id = "SELECT id FROM user_login WHERE email= ?";
+      connection.query(sql_id, req.user, (err, foundId) => {
+        if (err) throw err;
+
+        const userId = foundId[0].id;
+
+        connection.query(
+          "Select * From employee_payroll_data where user_id = " + userId,
+          function (err, PayrollFound, fields) {
+            if (err) {
+              console.log(err);
+            }
+            res.render("payroll", {
+              page_name: "payroll",
+              OpenPayrollForm: req.query.openPayrollFormCssProperty,
+              AddOverlay: req.query.addOverlayCssProperty,
+              EmployeePayrollData: PayrollFound,
+              EmployeeDataFound: employeeFound,
+            });
           }
-          res.render("payroll", {
-            page_name: "payroll",
-            OpenPayrollForm: req.query.openPayrollFormCssProperty,
-            AddOverlay: req.query.addOverlayCssProperty,
-            EmployeePayrollData: PayrollFound,
-            EmployeeDataFound: employeeFound,
-          });
-        }
-      );
+        );
+      });
     }
   );
 
@@ -60,6 +62,7 @@ module.exports = function (payroll) {
       const taxbleSalary = basicSalary - ssf + taxAllowance - totalReliefs;
 
       const tier1Amount = basicSalary * 0.135;
+      const tier2Amount = basicSalary * 0.05;
 
       if (taxbleSalary > 319) {
         let firstResult = taxbleSalary - 319;
@@ -99,65 +102,72 @@ module.exports = function (payroll) {
         console.log("no tax on salary");
       }
 
-      const netSalary =
-        basicSalary -
-        ssf +
-        taxAllowance -
-        payeeTax +
-        nonTaxableAllowances -
-        otherDeductions;
+      const sql_id = "SELECT id FROM user_login WHERE email= ?";
 
-      const employeePayrollDetail = {
-        Employee_name: req.body.empName,
-        Staff_id: req.body.staffID,
-        Tin_number: req.body.tinNumber,
-        Position: req.body.position,
-        SSF_account_number: req.body.ssfNumber,
-        BankBranch_BankName: req.body.bank,
-        Bank_account_number: req.body.bankAccountNo,
+      connection.query(sql_id, req.user, (err, foundId) => {
+        if (err) throw err;
 
-        Basic_salary: fomatter(basicSalary),
-        SSF: fomatter(ssf),
-        Total_taxable_allowance: fomatter(taxAllowance),
-        Total_reliefs: fomatter(totalReliefs),
-        Taxable_salary: fomatter(taxbleSalary),
-        Payee: fomatter(payeeTax),
-        Non_taxable_allowance: fomatter(nonTaxableAllowances),
-        Other_deductions: fomatter(otherDeductions),
-        Net_Salary: fomatter(netSalary),
-        Tier1_Returns: fomatter(tier1Amount),
-      };
+        const userId = foundId[0].id;
 
-      //---- Updating Employee Payroll Data in the database table
-      if (req.body.update) {
-        const id = req.body.update;
-        const update_sql = "UPDATE employee_payroll_data SET ? WHERE id= ?";
-        connection.query(
-          update_sql,
-          [employeePayrollDetail, id],
-          function (err, detailsUpdated) {
-            if (err) throw err;
-            console.log(detailsUpdated);
-          }
-        );
-      }
-      //---- Adding Employee Payroll Data to the database table
-      else {
-        const payroll_sql = "INSERT INTO employee_payroll_data SET ?";
-        connection.query(
-          payroll_sql,
-          employeePayrollDetail,
-          function (err, result) {
-            if (err) {
-              console.log(err);
+        const netSalary =
+          basicSalary -
+          ssf +
+          taxAllowance -
+          payeeTax +
+          nonTaxableAllowances -
+          otherDeductions;
+
+        const employeePayrollDetail = {
+          user_id: userId,
+          Employee_name: req.body.empName,
+          Staff_id: req.body.staffID,
+          Tin_number: req.body.tinNumber,
+          Position: req.body.position,
+          SSF_account_number: req.body.ssfNumber,
+          BankBranch_BankName: req.body.bank,
+          Bank_account_number: req.body.bankAccountNo,
+
+          Basic_salary: fomatter(basicSalary),
+          SSF: fomatter(ssf),
+          Total_taxable_allowance: fomatter(taxAllowance),
+          Total_reliefs: fomatter(totalReliefs),
+          Taxable_salary: fomatter(taxbleSalary),
+          Payee: fomatter(payeeTax),
+          Non_taxable_allowance: fomatter(nonTaxableAllowances),
+          Other_deductions: fomatter(otherDeductions),
+          Net_Salary: fomatter(netSalary),
+          Tier1_Returns: fomatter(tier1Amount),
+          Tier2_Returns: fomatter(tier2Amount),
+        };
+
+        //---- Updating Employee Payroll Data in the database table
+        if (req.body.update) {
+          const id = req.body.update;
+          const update_sql = "UPDATE employee_payroll_data SET ? WHERE id= ?";
+          connection.query(
+            update_sql,
+            [employeePayrollDetail, id],
+            function (err, detailsUpdated) {
+              if (err) throw err;
             }
-            console.log(result);
-            console.log("1 record add" + result.ID);
-          }
-        );
-      }
+          );
+        }
+        //---- Adding Employee Payroll Data to the database table
+        else {
+          const payroll_sql = "INSERT INTO employee_payroll_data SET ?";
+          connection.query(
+            payroll_sql,
+            employeePayrollDetail,
+            function (err, result) {
+              if (err) {
+                console.log(err);
+              }
+            }
+          );
+        }
 
-      res.redirect("/payroll");
+        res.redirect("/payroll");
+      });
     }
   );
 
@@ -212,7 +222,6 @@ module.exports = function (payroll) {
         console.log("Employee Delected");
         res.redirect("/payroll");
       });
-      console.log(req.body);
     }
   );
 };

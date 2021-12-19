@@ -46,7 +46,8 @@
                                                  #######################################-->
                                                  <div class="form py-3">
                                                         <div class="form-row my-5">
-                                                               <form action="/company_details" method="post">
+                                                               <form action="/company_details" method="post"
+                                                                      enctype="multipart/form-data">
                                                                       <div class="mb-3">
                                                                              <label for="company_name"
                                                                                     class="form-label">Company
@@ -65,21 +66,21 @@
                                                                       <div class="mb-3">
                                                                              <label for="tin" class="form-label">Company
                                                                                     Tin Number</label>
-                                                                             <input type="text" name="tin" required
+                                                                             <input type="text" name="tin"
                                                                                     class="form-control">
                                                                       </div>
                                                                       <div class="mb-3">
                                                                              <label for="er_number"
                                                                                     class="form-label">Er Number</label>
                                                                              <input type="text" name="er_number"
-                                                                                    required class="form-control">
+                                                                                    class="form-control">
                                                                       </div>
                                                                       <div class="mb-3">
                                                                              <label for="image"
                                                                                     class="form-label">Company
                                                                                     Logo</label>
-                                                                             <input type="file" name="image" required
-                                                                                    class="form-control">
+                                                                             <input type="file" accept="image/*"
+                                                                                    name="image" class="form-control">
                                                                       </div>
                                                                       <button type="submit"
                                                                              class="btn w-100 btn-lg btn-primary">Submit</button>
