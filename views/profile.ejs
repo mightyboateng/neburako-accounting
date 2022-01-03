@@ -1,0 +1,117 @@
+<%- include('partials/header'); -%>
+
+       <!-- //////////////////// ////////////////////////////////////////////////
+                                   Intro and login fields
+                     //////////////////////////////////////////////////////////////////////////-->
+       <section id="profile" class="profile-section">
+              <%UserDetail.forEach(detail=>{%>
+                     <div class="container">
+                            <div class="row align-items-center text-dark">
+                                   <!-- ########### Profile Image ####### -->
+                                   <div class="col-md-6 profile-img">
+                                          <% if(detail.image==='' ) { %>
+                                                 <img src="/images/profile.jpg" alt="user-image">
+                                                 <%} else {%>
+                                                        <img src="/images/uploaded_images/<%=detail.image %>"
+                                                               alt="user-image">
+                                                        <%}%>
+                                   </div>
+
+                                   <!-- ################## Details Fields ############## -->
+                                   <div class="col-md-6 pt-4">
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>Company Name</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>
+                                                               <%= detail.company_name %>
+                                                        </p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>Address</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>
+                                                               <%= detail.company_address %>
+                                                        </p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>User Name</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>
+                                                               <%=UserName %>
+                                                        </p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>Email Address</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>mighty@mighty.tech</p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>Er Number</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>
+                                                               <%= detail.er_number %>
+                                                        </p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+                                          <div class="row">
+                                                 <div class="col-lg-12">
+                                                        <h5>Tin Number</h5>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                        <p>
+                                                               <%= detail.tin %>
+                                                        </p>
+                                                 </div>
+
+                                                 <hr>
+
+                                          </div>
+
+                                          <form action="/edit_profile" method="get">
+                                                 <button class="w-100 btn btn-lg bg-primary text-white"
+                                                        type="submit">Edit
+                                                        Profile</button>
+                                          </form>
+                                          <br><br>
+                                          <%})%>
+                                   </div>
+
+                            </div>
+                     </div>
+       </section>
+
+
+       <%- include('partials/footer'); -%>

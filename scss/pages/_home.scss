@@ -12,14 +12,14 @@
         font-weight: 600;
       }
     }
+
+    button i {
+      color: #0d6efd;
+    }
   }
 
   // ######## Buttons ############
   .btn-rounded {
-    //   @include media-breakpoint-down(sm) {
-
-    //     display: none;
-    //   }
     position: relative;
     padding: 0.9375rem 4.375rem 0.9375rem 1.2rem;
     font-weight: 700;

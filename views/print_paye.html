@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+
+       <!-- #######################
+              Bootstrap CSS
+       ############################# -->
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+              crossorigin="anonymous">
+
+       <style>
+              .page {
+                     background: white;
+                     display: block;
+                     margin: 0 auto;
+                     position: relative;
+              }
+
+              .page[size="A4"] {
+                     width: 21cm;
+                     height: 29.7cm;
+                     overflow: hidden;
+              }
+
+              .head-table {
+                     border: 1px solid black;
+                     margin: auto;
+              }
+
+              .body-table,
+              .body-row,
+              .body-head,
+              .body-data {
+                     border: 1px solid black;
+                     /* width: 100%; */
+              }
+
+              .company-heading {
+                     font-size: 20px;
+                     color: darkcyan;
+              }
+       </style>
+</head>
+
+<body style="background: darkgray">
+
+
+       <div class="my-5 page" size='A4'>
+              <div class="p-5">
+                     <div class="row">
+                            <div class="col">
+                                   <table style="width: 100%;">
+                                          <tr>
+                                                 <th class="company-heading">
+                                                        {{CompanyName}}
+                                                 </th>
+                                                 <th>Tin: <span class="company-heading">
+                                                               {{CompanyTin}}
+                                                        </span> </th>
+                                          </tr>
+                                          <tr>
+                                                 <th>Month: <span class="company-heading">
+                                                               {{Period}}
+                                                        </span>
+                                                 </th>
+                                          </tr>
+                                   </table>
+                            </div>
+
+                            <div class="row">
+                                   <div class="col">
+                                          <table class="table">
+                                                 <thead class="bg-primary">
+                                                        <tr>
+                                                               <th scope="col" class="text-white">Employee Name</th>
+                                                               <th scope="col" class="text-white">Basic Salary <br><span
+                                                                             class="currency">(Gh₵)</span>
+                                                               </th>
+                                                               <th scope="col" class="text-white">SSF (5.5%) <br><span
+                                                                             class="currency">(Gh₵)</span>
+                                                               </th>
+                                                               <th scope="col" class="text-white">Taxable Allowances
+                                                                      <br><span class="currency">(Gh₵)</span>
+                                                               </th>
+                                                               <th scope="col" class="text-white">Tax Reliefs <br><span
+                                                                             class="currency">(Gh₵)</span>
+                                                               </th>
+                                                               <th scope="col" class="text-white">Taxable Salary
+                                                                      <br><span class="currency">(Gh₵)</span>
+                                                               </th>
+                                                               <th scope="col" class="text-white">Paye <br><span
+                                                                             class="currency">(Gh₵)</span>
+                                                               </th>
+                                                        </tr>
+                                                 </thead>
+
+                                                 <tbody>
+                                                        {{#Emp}}
+                                                        <tr>
+                                                               <th scope="row">
+                                                                      {{Employee_name}}
+                                                               </th>
+                                                               <td>
+                                                                      {{Basic_salary}}
+                                                               </td>
+                                                               <td>
+                                                                      {{SSF}}
+                                                               </td>
+                                                               <td>
+                                                                      {{Total_taxable_allowance}}
+
+                                                               </td>
+                                                               <td>
+                                                                      {{Total_reliefs}}
+                                                               </td>
+                                                               <td>
+                                                                      {{Taxable_salary}}
+                                                               </td>
+                                                               <td>
+                                                                      {{Payee}}
+                                                               </td>
+                                                        </tr>
+                                                        {{/Emp}}
+                                                        <tr>
+                                                               <td> </td>
+                                                               <td> </td>
+                                                               <td> </td>
+                                                               <td> </td>
+                                                               <td> </td>
+                                                               <th scope="col" class="company-heading">
+                                                                      Total</th>
+                                                               <th scope="col" class="company-heading">
+                                                                      {{totalPay}}
+                                                               </th>
+                                                        </tr>
+
+                                                 </tbody>
+                                          </table>
+                                   </div>
+                            </div>
+                     </div>
+              </div>
+       </div>
+
+</body>
+
+</html>

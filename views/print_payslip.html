@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Bootstrap CSS -->
+<!-- <link rel="stylesheet" href="/public/css/styles.css"> -->
+
+<!-- #######################
+       Bootstrap CSS
+############################# -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<link rel="stylesheet" href="../public/css/styles.css">
+
+<style>
+       .page {
+              background: white;
+              display: block;
+              margin: 0 auto;
+              position: relative;
+       }
+
+       .page[size="A4"] {
+              width: 21cm;
+              height: 29.7cm;
+              overflow: hidden;
+       }
+
+       .bb {
+              border-bottom: 1px solid #0d6efd;
+       }
+
+       /* Section 1*/
+       .top-content {
+              padding-bottom: 10px;
+       }
+
+       .logo img {
+              height: 60px;
+       }
+
+       /* Section 2 */
+       .company-info table th,
+       td {
+              text-align: start;
+       }
+
+       .company-heading {
+              font-size: 20px;
+              color: darkcyan;
+       }
+
+       .company-subheading {
+              font-weight: 500;
+       }
+
+       .company-content {
+              text-align: end;
+       }
+
+       /* Section 3 */
+       .list-area thead {
+              color: white;
+              background: #0d6efd;
+       }
+
+       .list-area th,
+       td {
+              text-align: start;
+       }
+
+       .new-list {
+              color: red;
+       }
+</style>
 
 <body style="background: darkgray">
        <div class="my-5 page" size='A4'>
@@ -15,7 +80,7 @@
                      ############################################## -->
                      <section class="top-content bb d-flex justify-content-between">
                             <div class="logo">
-                                   <img class="img-fluid" src="../public/images/cover.png" alt="Company-logo">
+                                   <img class="img-fluid" src="/public/images/cover.png" alt="Company-logo">
                             </div>
                             <div class="top-center">
                                    <p>Payslip</p>
@@ -26,12 +91,11 @@
                                    </div>
                                    <div class="position-relative">
                                           <p class="address">Company Address</p>
-                                          <p class="phone">Company Phone Number </p>
-
                                    </div>
                             </div>
                      </section>
 
+                     {{#Emp}}
                      <!-- ##################################################
                                           Section 2
                      #################################################### -->
@@ -47,14 +111,14 @@
                                           <p class="company-subheading">Employee Name</p>
                                    </div>
                                    <div class="col-4">
-                                          <p class="company-content">Michael Nana Boateng Adams</p>
+                                          <p class="company-content">{{Employee_name}}</p>
                                    </div>
                                    <div class="col-2">
                                           <p class="company-subheading">Tin No.</p>
 
                                    </div>
                                    <div class="col-3">
-                                          <p class="company-content">2343445644566655</p>
+                                          <p class="company-content">{{Tin_number}}</p>
 
                                    </div>
 
@@ -62,17 +126,18 @@
                             <!-- Staff Id & Position -->
                             <div class="row">
                                    <div class="col-3">
+                                          <p class="company-subheading">Position</p>
+                                   </div>
+                                   <div class="col-4">
+                                          <p class="company-content">{{Position}}</p>
+                                   </div>
+                                   <div class="col-2">
                                           <p class="company-subheading">Staff ID</p>
                                    </div>
                                    <div class="col-3">
-                                          <p>23435</p>
+                                          <p class="company-content">{{Staff_id}}</p>
                                    </div>
-                                   <div class="col-3">
-                                          <p class="company-subheading">Position</p>
-                                   </div>
-                                   <div class="col-3">
-                                          <p class="company-content">Web Developer</p>
-                                   </div>
+
                             </div>
                             <!-- SSF & Bank Name -->
                             <div class="row">
@@ -81,7 +146,7 @@
 
                                    </div>
                                    <div class="col-4">
-                                          <p class="company-content">First National Bank</p>
+                                          <p class="company-content">{{BankBranch_BankName}}</p>
 
                                    </div>
                                    <div class="col-2">
@@ -89,7 +154,7 @@
 
                                    </div>
                                    <div class="col-3">
-                                          <p class="company-content">2343445646655</p>
+                                          <p class="company-content">{{SSF_account_number}}</p>
 
                                    </div>
                             </div>
@@ -100,27 +165,28 @@
 
                                    </div>
                                    <div class="col-4">
-                                          <p class="company-content">7564574674556</p>
+                                          <p class="company-content">{{Bank_account_number}}</p>
 
                                    </div>
                                    <div class="col-2">
                                           <p class="company-subheading">Date</p>
 
                                    </div>
+                                   {{/Emp}}
                                    <div class="col-3">
-                                          <p class="company-content">2nd December, 2021</p>
+                                          <p class="company-content">{{Period}}</p>
 
                                    </div>
                             </div>
                      </section>
-
+                     {{#Emp}}
                      <!-- ####################################################
                                           Section 3
                      #################################################### -->
                      <section class="list-area mt-3">
                             <!-- Earnings total -->
                             <table class="table">
-                                   <thead>
+                                   <thead class="bg-primary">
                                           <tr>
                                                  <td>DESCRIPTION</td>
                                                  <td>EARNINGS</td>
@@ -131,88 +197,57 @@
                                    <tbody>
                                           <tr>
                                                  <td>BASIC SALARY</td>
-                                                 <td>1500</td>
+                                                 <td>{{Basic_salary}}</td>
                                                  <td></td>
 
                                           </tr>
                                           <tr>
                                                  <td>TAXABLE ALLOWANCE</td>
-                                                 <td>200</td>
+                                                 <td>{{Total_taxable_allowance}}</td>
                                                  <td></td>
 
                                           </tr>
                                           <tr>
                                                  <td>NON-TAXABLE ALLOWANCE</td>
-                                                 <td>-</td>
+                                                 <td>{{Non_taxable_allowance}}</td>
                                                  <td></td>
 
                                           </tr>
                                           <tr>
                                                  <td>PAYE INCOME TAX</td>
                                                  <td></td>
-                                                 <td>1500</td>
+                                                 <td>{{Payee}}</td>
 
                                           </tr>
                                           <tr>
                                                  <td>SSF(5.5%)</td>
                                                  <td></td>
-                                                 <td>200</td>
+                                                 <td>{{SSF}}</td>
 
                                           </tr>
                                           <tr>
                                                  <td>OTHER DEDUCTIONS</td>
                                                  <td></td>
-                                                 <td>-</td>
+                                                 <td>{{Other_deductions}}</td>
 
                                           </tr>
+                                          {{/Emp}}
                                           <tr>
                                                  <td>TOTAL</td>
-                                                 <td>848</td>
-                                                 <td>848</td>
+                                                 <td>{{totalEarns}}</td>
+                                                 <td>{{totalDeductions}}</td>
 
                                           </tr>
                                    </tbody>
                             </table>
 
-                            <!-- Deduction total -->
-                            <!-- <table class="table table-hover">
-                                   <thead>
-                                          <tr>
-                                                 <td>DEDUCTIONS</td>
-                                                 <td>AMOUNT</td>
-                                          </tr>
-
-                                   </thead>
-                                   <tbody>
-                                          <tr>
-                                                 <td>PAYE INCOME TAX</td>
-                                                 <td>1500</td>
-
-                                          </tr>
-                                          <tr>
-                                                 <td>SSF(5.5%)</td>
-                                                 <td>200</td>
-
-                                          </tr>
-                                          <tr>
-                                                 <td>OTHER DEDUCTIONS</td>
-                                                 <td>-</td>
-
-                                          </tr>
-                                          <tr>
-                                                 <td>TOTAL DEDUCTIONS</td>
-                                                 <td>848</td>
-
-                                          </tr>
-                                   </tbody>
-                            </table> -->
 
                             <!-- NET PAY total -->
                             <table class="table">
                                    <tbody>
                                           <tr>
                                                  <td class="company-heading">NET PAY (GHC)</td>
-                                                 <td class="company-heading">23,00</td>
+                                                 <td class="company-heading">{{netPay}}</td>
                                           </tr>
 
                                    </tbody>
@@ -240,7 +275,7 @@
                                           <p>FINANCIAL MANAGER</p>
                                    </div>
                             </div>
-                            <br>
+                            <br><br>
                             <!-- STAMP/SIGNATURE by -->
                             <div class="row">
                                    <div class="col-6">
@@ -260,7 +295,6 @@
                                    </div>
                             </div>
                      </section>
-
               </div>
        </div>
 </body>

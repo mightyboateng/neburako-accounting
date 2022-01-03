@@ -19,6 +19,8 @@ login.home(app);
 registration.register(app);
 require(__dirname + "/components/company_details")(app);
 
+require(__dirname + "/components/profile")(app);
+
 require(__dirname + "/components/dashboard")(app);
 require(__dirname + "/components/payroll")(app);
 require(__dirname + "/components/payslip")(app);
@@ -31,7 +33,19 @@ require(__dirname + "/components/payee")(app);
 
 // ----------------------------------------------------------------------//
 
-const port = 3100;
+app.get("/services", (req, res) => {
+  res.render("services");
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+app.post("/contact", (req, res) => {
+  res.redirect("/contact");
+});
+
+const port = 3300;
 app.listen(port, function () {
   console.log("Server started on port " + port + " ............");
 });

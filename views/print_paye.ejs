@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+
+       <!-- CSS -->
+       <link rel="stylesheet" href="/css/styles.css">
+
+       <!-- Fontawesome Icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+              integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+              crossorigin="anonymous" />
+</head>
+
+<body style="background: darkgray">
+       <div class="container">
+              <div class="row mt-3 download-btn">
+                     <div class="col">
+                            <a href="/tier2Returns" class="btn bg-primary">Download</a>
+                     </div>
+              </div>
+       </div>
+
+
+       <div class="my-5 page" size='A4'>
+              <div class="p-5">
+                     <div class="row">
+                            <div class="col">
+                                   <table style="width: 100%;">
+                                          <tr>
+                                                 <th class="company-heading">
+                                                        <%= CompanyName %>
+                                                 </th>
+                                                 <th>Tin: <span class="company-heading">
+                                                               <%= CompanyTin %>
+                                                        </span> </th>
+                                          </tr>
+                                          <tr>
+                                                 <th>Month: <span class="company-heading">
+                                                               <%= Period %>
+                                                        </span>
+                                                 </th>
+                                          </tr>
+                                   </table>
+                            </div>
+                     </div>
+                     <div class="row">
+                            <div class="col">
+                                   <table class="table">
+                                          <thead class="bg-primary">
+                                                 <tr>
+                                                        <th scope="col" class="text-white">Employee Name</th>
+                                                        <th scope="col" class="text-white">Basic Salary <br><span
+                                                                      class="currency">(Gh₵)</span>
+                                                        </th>
+                                                        <th scope="col" class="text-white">SSF (5.5%) <br><span
+                                                                      class="currency">(Gh₵)</span>
+                                                        </th>
+                                                        <th scope="col" class="text-white">Taxable Allowances
+                                                               <br><span class="currency">(Gh₵)</span>
+                                                        </th>
+                                                        <th scope="col" class="text-white">Tax Reliefs <br><span
+                                                                      class="currency">(Gh₵)</span>
+                                                        </th>
+                                                        <th scope="col" class="text-white">Taxable Salary <br><span
+                                                                      class="currency">(Gh₵)</span>
+                                                        </th>
+                                                        <th scope="col" class="text-white">Paye <br><span
+                                                                      class="currency">(Gh₵)</span>
+                                                        </th>
+                                                 </tr>
+                                          </thead>
+
+                                          <tbody>
+                                                 <% for (let i=0; i<EmployeePayrollData.length; i++) { %>
+                                                        <tr>
+                                                               <th scope="row">
+                                                                      <%= EmployeePayrollData[i].Employee_name %>
+                                                               </th>
+                                                               <td>
+                                                                      <%= EmployeePayrollData[i].Basic_salary %>
+                                                               </td>
+                                                               <td>
+                                                                      <%= EmployeePayrollData[i].SSF %>
+                                                               </td>
+                                                               <td>
+                                                                      <%=EmployeePayrollData[i].Total_taxable_allowance
+                                                                             %>
+                                                               </td>
+                                                               <td>
+                                                                      <%= EmployeePayrollData[i].Total_reliefs %>
+                                                               </td>
+                                                               <td>
+                                                                      <%=EmployeePayrollData[i].Taxable_salary %>
+                                                               </td>
+                                                               <td>
+                                                                      <%=EmployeePayrollData[i].Payee %>
+                                                               </td>
+                                                        </tr>
+                                                        <% } %>
+                                                               <tr>
+                                                                      <td> </td>
+                                                                      <td> </td>
+                                                                      <td> </td>
+                                                                      <td> </td>
+                                                                      <td> </td>
+                                                                      <th scope="col" class="company-heading">
+                                                                             Total</th>
+                                                                      <th scope="col" class="company-heading">
+                                                                             <%= totalPaye %>
+                                                                      </th>
+                                                               </tr>
+
+                                          </tbody>
+                                   </table>
+                            </div>
+                     </div>
+              </div>
+       </div>
+
+
+       <!-- ###############################
+                     Bootstrap JS
+       ################################ -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+              crossorigin="anonymous">
+              </script>
+</body>
+
+</html>

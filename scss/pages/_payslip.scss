@@ -1,14 +1,20 @@
 /* ##################################################### 
               Payslip Styling 
 ########################################################### */
+.payslip-section::before {
+  display: block;
+  content: "";
+  height: 80px;
+}
+
 .payslip-section .employee-payslip-form .payslip-form-content {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #f3f3f3;
   width: 1000px;
-  height: 750px;
+  height: 700px;
   z-index: 2;
   padding: 20px;
   transition: 300ms ease-in;

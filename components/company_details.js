@@ -1,6 +1,5 @@
 const connection = require("./database"),
   registerUserId = require("./register"),
-  checkAuthenticated = require("./home"),
   fileUpload = require("express-fileupload");
 
 module.exports = function (company_details) {
@@ -8,20 +7,25 @@ module.exports = function (company_details) {
 
   company_details
     .route("/company_details")
+
     .get((req, res) => {
-      res.render("company_details");
+      if (registerUserId.getRegisteredUser() === undefined) {
+        res.redirect("/");
+      } else {
+        res.render("company_details");
+      }
     })
 
     .post((req, res) => {
       const email = registerUserId.getRegisteredUser();
-      let userId;
+
       const sql_user_details = "INSERT INTO user_detail SET ?";
 
       const sql_id = "SELECT id FROM user_login WHERE email= ?";
       connection.query(sql_id, email, (err, foundId) => {
         if (err) throw err;
 
-        userId = foundId[0].id;
+        const userId = foundId[0].id;
 
         if (!req.files) {
           const userDetailsNoImage = {

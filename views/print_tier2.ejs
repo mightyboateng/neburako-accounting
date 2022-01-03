@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+
+       <!-- CSS -->
+       <link rel="stylesheet" href="/css/styles.css">
+
+       <!-- Fontawesome Icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+              integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+              crossorigin="anonymous" />
+</head>
+
+<body style="background: darkgray">
+       <div class="container">
+              <div class="row mt-3">
+                     <div class="col">
+                            <a href="/tier2Returns" class="btn bg-primary">Download</a>
+                     </div>
+              </div>
+       </div>
+
+
+       <div class="my-5 page" size='A4'>
+              <div class="p-5">
+                     <div class="row">
+                            <div class="col">
+                                   <table class="head-table ">
+                                          <tr>
+                                                 <th scope="col" class="px-3 py-2 text-center company-heading">
+                                                        <%= CompanyName %>
+                                                 </th>
+                                          </tr>
+                                          <tr>
+                                                 <th class="px-3 py-2 text-center company-heading">
+                                                        <%= CompanyAddress %>
+                                                 </th>
+                                                 <th class="px-3 py-2 text-center">ER No.</th>
+                                          </tr>
+                                          <tr>
+                                                 <td class="px-3 py-2 text-center company-heading"> SSNIT Tier 2 -(5%)
+                                                        Contribution
+                                                        Returns
+                                                 </td>
+                                                 <td class="px-3 py-2 text-center company-heading">
+                                                        <%= CompanyTin %>
+                                                 </td>
+                                          </tr>
+                                          <tr>
+                                                 <td class="px-3 py-2 text-center"> For the Month of:</td>
+                                                 <th class="px-3 py-2 company-heading">
+                                                        <%= Period %>
+                                                 </th>
+                                          </tr>
+
+                                   </table>
+                            </div>
+                     </div>
+
+                     <br><br>
+
+                     <div class="row">
+                            <div class="col">
+                                   <table class="body-table" style="width: 100%;">
+                                          <thead class="bg-primary">
+                                                 <tr class="body-row">
+                                                        <th scope="col" class="px-2 body-head text-white">Employee Name
+                                                        </th>
+                                                        <th scope="col" class="px-2 body-head text-white">Staff ID</th>
+                                                        <th scope="col" class="px-2 body-head text-white">Basic Salary
+                                                        </th>
+                                                        <th scope="col" class="px-2 body-head text-white">Amount
+                                                               <br><span class="currency">(Gh₵)</span>
+                                                        </th>
+                                                 </tr>
+                                          </thead>
+                                          <tbody>
+                                                 <% EmployeePayrollData.forEach(emp=> { %>
+
+
+                                                        <tr class="body-row">
+                                                               <td class="body-data">
+                                                                      <%= emp.Employee_name %>
+                                                               </td>
+                                                               <td class="body-data">
+                                                                      <%= emp.Staff_id %>
+                                                               </td>
+                                                               <td class="body-data">
+                                                                      <%= emp.Basic_salary %>
+                                                               </td>
+                                                               <td class="body-data">
+                                                                      <%= emp.Tier2_Returns %>
+                                                               </td>
+                                                        </tr>
+                                                        <%})%>
+                                                               <tr>
+                                                                      <td> </td>
+                                                                      <td> </td>
+                                                                      <th scope="col" class="company-heading">
+                                                                             Total</th>
+                                                                      <th scope="col" class="company-heading body-head">
+                                                                             <%= TotalTier2 %>
+                                                                      </th>
+                                                               </tr>
+                                          </tbody>
+                                   </table>
+                            </div>
+                     </div>
+              </div>
+       </div>
+
+
+       <!-- ###############################
+                     Bootstrap JS
+       ################################ -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+              crossorigin="anonymous">
+              </script>
+</body>
+
+</html>

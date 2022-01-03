@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+
+       <!-- CSS -->
+       <link rel="stylesheet" href="/css/styles.css">
+
+       <!-- Fontawesome Icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+              integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+              crossorigin="anonymous" />
+</head>
+
+<body style="background: darkgray">
+       <div class="container mt-3">
+              <div class="row">
+                     <div class="col">
+                            <a href="/download_payslip" class="btn bg-primary">Download</a>
+                     </div>
+              </div>
+       </div>
+       <div class="my-5 page" size='A4'>
+              <div class="p-5">
+                     <% NavDetails.forEach(detail=> { %>
+                            <!-- #############################################
+                                                  Section 1
+                     ############################################## -->
+                            <section class="top-content bb d-flex justify-content-between">
+                                   <div class="logo">
+                                          <% if(detail.image==='' ) { %>
+                                                 <div></div>
+                                                 <%} else {%>
+
+                                                        <img src="/images/uploaded_images/<%=detail.image %>"
+                                                               alt="user-image">
+                                                        <%}%>
+                                   </div>
+                                   <div class="top-center">
+                                          <p>Payslip</p>
+                                   </div>
+                                   <div class="top-left">
+                                          <div>
+                                                 <p class="company-heading">
+                                                        <%= detail.company_name %>
+                                                 </p>
+                                          </div>
+                                          <div class="position-relative">
+                                                 <p class="address">
+                                                        <%= detail.company_address %>
+                                                 </p>
+
+                                          </div>
+                                   </div>
+                            </section>
+                            <%})%>
+
+                                   <% EmployeePayrollData.forEach(employee=> { %>
+                                          <!-- ##################################################
+                                                   Section 2
+                      #################################################### -->
+                                          <section class="company-info mt-1">
+                                                 <div class="row extra-info pt-1">
+                                                        <div class="col-12">
+                                                               <p class="company-heading">Employee Details</p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- Employee Name & Tin No. -->
+                                                 <div class="row">
+                                                        <div class="col-3">
+                                                               <p class="company-subheading">Employee Name</p>
+                                                        </div>
+                                                        <div class="col-4">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].Employee_name %>
+                                                               </p>
+                                                        </div>
+                                                        <div class="col-2">
+                                                               <p class="company-subheading">Tin No.</p>
+
+                                                        </div>
+                                                        <div class="col-3">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].Tin_number %>
+                                                               </p>
+
+                                                        </div>
+
+                                                 </div>
+                                                 <!-- Staff Id & Position -->
+                                                 <div class="row">
+                                                        <div class="col-3">
+                                                               <p class="company-subheading">Position</p>
+                                                        </div>
+                                                        <div class="col-4">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].Position %>
+                                                               </p>
+                                                        </div>
+                                                        <div class="col-2">
+                                                               <p class="company-subheading">Staff ID</p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                               <p class="company-content">
+                                                                      <%= EmployeePayrollData[0].Staff_id %>
+                                                               </p>
+                                                        </div>
+
+                                                 </div>
+                                                 <!-- SSF & Bank Name -->
+                                                 <div class="row">
+                                                        <div class="col-3">
+                                                               <p class="company-subheading">Bank Name</p>
+
+                                                        </div>
+                                                        <div class="col-4">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].BankBranch_BankName %>
+                                                               </p>
+
+                                                        </div>
+                                                        <div class="col-2">
+                                                               <p class="company-subheading">SSF No.</p>
+
+                                                        </div>
+                                                        <div class="col-3">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].SSF_account_number %>
+                                                               </p>
+
+                                                        </div>
+                                                 </div>
+                                                 <!-- Bank A/C & Date -->
+                                                 <div class="row">
+                                                        <div class="col-3">
+                                                               <p class="company-subheading">Bank A/C No.</p>
+
+                                                        </div>
+                                                        <div class="col-4">
+                                                               <p class="company-content">
+                                                                      <%=EmployeePayrollData[0].Bank_account_number %>
+                                                               </p>
+
+                                                        </div>
+                                                        <div class="col-2">
+                                                               <p class="company-subheading">Date</p>
+
+                                                        </div>
+                                                        <div class="col-3">
+                                                               <p class="company-content">
+                                                                      <%=Period %>
+                                                               </p>
+
+                                                        </div>
+                                                 </div>
+                                          </section>
+
+                                          <!-- ####################################################
+                                                   Section 3
+                     #################################################### -->
+                                          <section class="list-area mt-3">
+                                                 <!-- Earnings total -->
+                                                 <table class="table">
+                                                        <thead>
+                                                               <tr>
+                                                                      <td>DESCRIPTION</td>
+                                                                      <td>EARNINGS</td>
+                                                                      <td>DEDUCTIONS</td>
+                                                               </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                               <tr>
+                                                                      <td>BASIC SALARY</td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].Basic_salary %>
+                                                                      </td>
+                                                                      <td></td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>TAXABLE ALLOWANCE</td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].Total_taxable_allowance
+                                                                                    %>
+                                                                      </td>
+                                                                      </td>
+                                                                      <td></td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>NON-TAXABLE ALLOWANCE</td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].Non_taxable_allowance
+                                                                                    %>
+                                                                      </td>
+                                                                      <td></td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>PAYE INCOME TAX</td>
+                                                                      <td></td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].Payee %>
+                                                                      </td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>SSF(5.5%)</td>
+                                                                      <td></td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].SSF %>
+                                                                      </td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>OTHER DEDUCTIONS</td>
+                                                                      <td></td>
+                                                                      <td>
+                                                                             <%=EmployeePayrollData[0].Other_deductions
+                                                                                    %>
+                                                                      </td>
+
+                                                               </tr>
+                                                               <tr>
+                                                                      <td>TOTAL</td>
+                                                                      <td>
+                                                                             <%= TotalEarns %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= TotalDeducts %>
+                                                                      </td>
+
+                                                               </tr>
+                                                        </tbody>
+                                                 </table>
+
+                                                 <!-- NET PAY total -->
+                                                 <table class="table">
+                                                        <tbody>
+                                                               <tr>
+                                                                      <td class="company-heading">NET PAY (GHC)</td>
+                                                                      <td class="company-heading">
+                                                                             <%= NetPay %>
+                                                                      </td>
+                                                               </tr>
+
+                                                        </tbody>
+                                                 </table>
+                                          </section>
+
+                                          <!-- ##############################################
+                                                   Section 4
+                     ############################################## -->
+                                          <section class="signature">
+                                                 <!-- Prepared by -->
+                                                 <div class="row">
+                                                        <div class="col-6">
+                                                               <p>PREPARED BY;</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                               <p>NANA EBURAKO</p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- DESIGNATION by -->
+                                                 <div class="row">
+                                                        <div class="col-6">
+                                                               <p>DESIGNATION BY;</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                               <p>FINANCIAL MANAGER</p>
+                                                        </div>
+                                                 </div>
+                                                 <br>
+                                                 <!-- STAMP/SIGNATURE by -->
+                                                 <div class="row">
+                                                        <div class="col-6">
+                                                               <p>STAMP/SIGNATURE</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                               <p>___________________________________</p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- DATE-->
+                                                 <div class="row">
+                                                        <div class="col-6">
+                                                               <p>DATE</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                               <p>
+                                                                      <%= CurrentDate %>
+                                                               </p>
+                                                        </div>
+                                                 </div>
+                                          </section>
+
+                                          <%})%>
+              </div>
+       </div>
+
+
+
+       <!-- ###############################
+                     Bootstrap JS
+       ################################ -->
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+              crossorigin="anonymous">
+              </script>
+</body>
+
+</html>

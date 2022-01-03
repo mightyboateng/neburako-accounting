@@ -10,28 +10,30 @@
                                    </div>
 
 
-                                   <!-- #####################################
-                                             Search bar 
-                                   ####################################### -->
 
-                                   <div class="container">
-                                          <form class="d-flex search-bar">
-                                                 <input class="form-control me-2" type="search"
-                                                        placeholder="Search employee name, position, id...."
-                                                        aria-label="Search">
-                                                 <button class="btn btn-primary" type="submit">Search</button>
-                                          </form>
-                                   </div>
 
                                    <% if(EmployeePayrollData.length===0) { %>
                                           <div class="container no-data">
                                                  <div class="row  ">
                                                         <div class="col-lg-12">
-                                                               <img src="/images/cover.png" alt="No data image">
+                                                               <img src="/images/no_data.jpg" alt="No data image">
                                                         </div>
                                                  </div>
                                           </div>
                                           <%} else {%>
+                                                 <!-- #####################################
+                                                            Search bar 
+                                                 ####################################### -->
+
+                                                 <div class="container">
+                                                        <form class="d-flex search-bar">
+                                                               <input class="form-control me-2" type="search"
+                                                                      placeholder="Search employee name, position, id...."
+                                                                      aria-label="Search">
+                                                               <button class="btn btn-primary"
+                                                                      type="submit">Search</button>
+                                                        </form>
+                                                 </div>
 
 
                                                  <!-- #####################################
@@ -41,12 +43,25 @@
                                                         <table class="table">
                                                                <thead>
                                                                       <tr>
-                                                                             <th scope="col">Employee Name</th>
-                                                                             <th scope="col">Staff ID</th>
-                                                                             <th scope="col">Tin Number</th>
-                                                                             <th scope="col">Position</th>
-                                                                             <th scope="col">SSF Number</th>
-                                                                             <th scope="col">Bank & Branch</th>
+                                                                             <th scope="col">Employee
+                                                                                    Name</th>
+                                                                             <th scope="col">Staff ID
+                                                                             </th>
+                                                                             <th scope="col">Tin
+                                                                                    Number</th>
+                                                                             <th scope="col">Position
+                                                                             </th>
+                                                                             <th scope="col">SSF
+                                                                                    Number</th>
+                                                                             <th scope="col">Bank &
+                                                                                    Branch</th>
+                                                                             <th scope="col">
+                                                                                    <form action="/employee-payslip-detalis"
+                                                                                           method="post">
+                                                                                           <input class="form-control"
+                                                                                                  type="month"
+                                                                                                  name="period">
+                                                                             </th>
                                                                       </tr>
                                                                </thead>
 
@@ -54,7 +69,7 @@
                                                                       <% for (let i=0; i<EmployeePayrollData.length;
                                                                              i++) { %>
                                                                              <tr>
-                                                                                    <th scope="row">
+                                                                                    <th>
                                                                                            <%= EmployeePayrollData[i].Employee_name
                                                                                                   %>
                                                                                     </th>
@@ -79,16 +94,17 @@
                                                                                                   %>
                                                                                     </td>
                                                                                     <td>
-                                                                                           <form action="/employee-payslip-detalis"
-                                                                                                  method="post">
-                                                                                                  <button class="btn btn-info text-white"
-                                                                                                         name="empID"
-                                                                                                         value="<%= EmployeePayrollData[i].ID %>">View
-                                                                                                         Employee</button>
+
+
+                                                                                           <button class="btn btn-info text-white"
+                                                                                                  name="empID"
+                                                                                                  value="<%= EmployeePayrollData[i].ID %>">View
+                                                                                                  Employee</button>
                                                                                            </form>
                                                                                     </td>
 
                                                                              </tr>
+
                                                                              <% } %>
                                                                </tbody>
                                                         </table>
@@ -97,15 +113,15 @@
                                                  <%}%>
 
                                                         <!-- ///////////////////////////////////////////////////////////////////////////
-                                                   Details of Payslip Form
-                                   /////////////////////////////////////////////////////////////////////////////// -->
+                                                                             Details of Payslip Form
+                                                        /////////////////////////////////////////////////////////////////////////////// -->
                                                         <div class="cotainer employee-payslip-form">
                                                                <% EmployeePayslip.forEach(employee=> { %>
                                                                       <div
-                                                                             class="container payslip-form-content <%=OpenPaySlipForm %>">
+                                                                             class="container payslip-form-content mt-4 <%=OpenPaySlipForm %>">
                                                                              <!-- ################ 
-                                                         Close Button
-                                                        ####################### -->
+                                                                                Close Button
+                                                                             ####################### -->
                                                                              <div class="row">
                                                                                     <div
                                                                                            class="col d-flex close-form-btn">
@@ -119,8 +135,8 @@
                                                                              </div>
                                                                              <hr>
                                                                              <!-- ####################################################
-                                                         More information about the Selected Employee
-                                                        ####################################################### -->
+                                                                                    More information about the Selected Employee
+                                                                             ####################################################### -->
                                                                              <div class="row payslip-form-view">
                                                                                     <div class="col">
 
@@ -244,8 +260,8 @@
                                                                                                                 </tr>
 
                                                                                                                 <!-- ########################
-                                                                                                  Deductions
-                                                                                           ########################## -->
+                                                                                                                       Deductions
+                                                                                                                ########################## -->
                                                                                                                 <tr>
                                                                                                                        <th>Deductions
                                                                                                                        </th>

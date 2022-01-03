@@ -9,33 +9,10 @@
                                           <h5>Payroll</h5>
                                    </div>
 
-                                   <!-- #####################################
-                                             Search bar 
-                                   ####################################### -->
-                                   <div class="container">
-                                          <form class="d-flex search-bar">
-                                                 <input class="form-control me-2" type="search"
-                                                        placeholder="Search employee name, position, id...."
-                                                        aria-label="Search">
-                                                 <button class="btn btn-primary" type="submit">Search</button>
-                                          </form>
-                                   </div>
 
 
-                                   <!-- #####################################################
-                                              Btn for Showing Input field
-                                   ###################################################### -->
-                                   <div class="container-fluid my-2">
-                                          <div class="row">
-                                                 <div class="col-11">
-                                                        <button class="btn btn-secondary add-new">+
-                                                               Add
-                                                               New Employee</button>
 
 
-                                                 </div>
-                                          </div>
-                                   </div>
 
                                    <!-- ##############################################
                                                   User input Field
@@ -223,13 +200,51 @@
 
                                    <% if(EmployeePayrollData.length===0) { %>
                                           <div class="container no-data">
-                                                 <div class="row  ">
+                                                 <div class="row">
                                                         <div class="col-lg-12">
-                                                               <img src="/images/cover.png" alt="No data image">
+                                                               <img src="/images/no_data.jpg" alt="No data image">
+                                                        </div>
+                                                 </div>
+                                                 <!-- #####################################################
+                                                                Btn for Showing Input field
+                                                 ###################################################### -->
+                                                 <div class="container-fluid my-2">
+                                                        <div class="row no-data-btn">
+                                                               <div class="col-12">
+                                                                      <button class="btn btn-primary add-new">+
+                                                                             Add
+                                                                             New Employee</button>
+                                                               </div>
                                                         </div>
                                                  </div>
                                           </div>
                                           <%} else {%>
+
+                                                 <!-- #####################################
+                                                           Search bar 
+                                                  ####################################### -->
+                                                 <div class="container">
+                                                        <form class="d-flex search-bar">
+                                                               <input class="form-control me-2" type="search"
+                                                                      placeholder="Search employee name, position, id...."
+                                                                      aria-label="Search">
+                                                               <button class="btn btn-primary"
+                                                                      type="submit">Search</button>
+                                                        </form>
+                                                 </div>
+
+                                                 <!-- #####################################################
+                                                                 Btn for Showing Input field
+                                                 ###################################################### -->
+                                                 <div class="container-fluid my-2">
+                                                        <div class="row">
+                                                               <div class="col-11">
+                                                                      <button class="btn btn-secondary add-new">+
+                                                                             Add
+                                                                             New Employee</button>
+                                                               </div>
+                                                        </div>
+                                                 </div>
                                                  <!-- #####################################################
                                                                            Table
                                                  ##################################################### -->

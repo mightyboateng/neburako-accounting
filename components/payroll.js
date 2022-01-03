@@ -2,6 +2,7 @@ const connection = require("./database");
 const fomatter = require("./controllers");
 const url = require("url");
 const authenticated = require("./home");
+const userNavDetail = require("./user");
 
 let payeeTax;
 
@@ -10,42 +11,51 @@ module.exports = function (payroll) {
     "/payroll",
     authenticated.checkAuthenticated,
     function (req, res) {
-      let employeeFound = [];
-      if (req.query.employeeID === undefined) {
-      } else {
-        connection.query(
-          "Select * From employee_payroll_data Where ID =" +
-            req.query.employeeID,
-          function (err, EmployeeFound, fields) {
-            if (err) {
-              console.log(err);
-            }
-            employeeFound = EmployeeFound;
+      userNavDetail
+        .userNavbarProfile(req.user)
+        .then((userDetails) => {
+          const navDetails = userDetails;
+          let employeeFound = [];
+          if (req.query.employeeID === undefined) {
+          } else {
+            connection.query(
+              "Select * From employee_payroll_data Where ID =" +
+                req.query.employeeID,
+              function (err, EmployeeFound, fields) {
+                if (err) {
+                  console.log(err);
+                }
+                employeeFound = EmployeeFound;
+              }
+            );
           }
-        );
-      }
-      const sql_id = "SELECT id FROM user_login WHERE email= ?";
-      connection.query(sql_id, req.user, (err, foundId) => {
-        if (err) throw err;
+          const sql_id = "SELECT id FROM user_login WHERE email= ?";
+          connection.query(sql_id, req.user, (err, foundId) => {
+            if (err) throw err;
 
-        const userId = foundId[0].id;
+            const userId = foundId[0].id;
 
-        connection.query(
-          "Select * From employee_payroll_data where user_id = " + userId,
-          function (err, PayrollFound, fields) {
-            if (err) {
-              console.log(err);
-            }
-            res.render("payroll", {
-              page_name: "payroll",
-              OpenPayrollForm: req.query.openPayrollFormCssProperty,
-              AddOverlay: req.query.addOverlayCssProperty,
-              EmployeePayrollData: PayrollFound,
-              EmployeeDataFound: employeeFound,
-            });
-          }
-        );
-      });
+            connection.query(
+              "Select * From employee_payroll_data where user_id = " + userId,
+              function (err, PayrollFound, fields) {
+                if (err) {
+                  console.log(err);
+                }
+                res.render("payroll", {
+                  page_name: "payroll",
+                  OpenPayrollForm: req.query.openPayrollFormCssProperty,
+                  AddOverlay: req.query.addOverlayCssProperty,
+                  EmployeePayrollData: PayrollFound,
+                  EmployeeDataFound: employeeFound,
+                  NavDetails: navDetails,
+                });
+              }
+            );
+          });
+        })
+        .catch((err) => {
+          throw err;
+        });
     }
   );
 
@@ -195,18 +205,27 @@ module.exports = function (payroll) {
     "/edit-employee-payroll-data",
     authenticated.checkAuthenticated,
     function (req, res) {
-      connection.query(
-        "Select * From employee_payroll_data Where ID =" + req.body.empID,
-        function (err, EmployeeFound, fields) {
-          if (err) {
-            console.log(err);
-          }
-          res.render("edit_payroll_data", {
-            page_name: "",
-            EditEmployee: EmployeeFound,
-          });
-        }
-      );
+      userNavDetail
+        .userNavbarProfile(req.user)
+        .then((userDetails) => {
+          const navDetails = userDetails;
+          connection.query(
+            "Select * From employee_payroll_data Where ID =" + req.body.empID,
+            function (err, EmployeeFound, fields) {
+              if (err) {
+                console.log(err);
+              }
+              res.render("edit_payroll_data", {
+                page_name: "payroll",
+                EditEmployee: EmployeeFound,
+                NavDetails: navDetails,
+              });
+            }
+          );
+        })
+        .catch((err) => {
+          throw err;
+        });
     }
   );
 

@@ -5,13 +5,20 @@
 @use "components/typography";
 
 // Importing Pages Styles
+@use "pages/services";
+
+@use "pages/profile";
+
+@use "pages/home";
 @use "pages/company_details";
+@use "pages/contact";
 @use "pages/register";
 @use "pages/every";
 @use "pages/nav";
-@use "pages/home";
 @use "pages/dashboard";
 @use "pages/payroll";
+@use "pages/edit_emp_data";
+@use "pages/edit_profile";
 @use "pages/payslip";
 @use "pages/print_payslip";
 @use "pages/footer";

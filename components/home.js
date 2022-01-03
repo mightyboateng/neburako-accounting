@@ -5,8 +5,8 @@ const flash = require("express-flash");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 const checkNotAuth = require("./home");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-let userLogIn;
 passport.use(
   new LocalStrategy({ usernameField: "email" }, function (
     email,
@@ -16,7 +16,6 @@ passport.use(
     const user = email;
     try {
       const check_email_sql = "SELECT email FROM user_login WHERE email= ?";
-      userLogIn = email;
 
       connection.query(check_email_sql, user, (err, foundEmail) => {
         if (err) throw err;
@@ -50,6 +49,44 @@ passport.use(
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
+// Google Authentication
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       callbackURL: "http://localhost:3300/auth/google/dashboard",
+//       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
+//     },
+//     function (accessToken, refreshToken, profile, cb) {
+//       console.log("Yes");
+//       connection.query(
+//         "Select * from user_login where email = " + profile.id,
+//         (err, user) => {
+//           if (err) throw err;
+//           else if (user) {
+//             return cb(user);
+//           }
+//           // } else {
+//           //   const newUser = {
+//           //     name: profile.name.givenName + " " + profile.name.familyName,
+//           //     email: profile.emails[0].value,
+//           //   };
+
+//           //   const register_sql = "INSERT INTO user_login SET ?";
+
+//           //   connection.query(register_sql, newUser, (err, result) => {
+//           //     if (err) throw err;
+//           //     return cb(result);
+//           //   });
+//           // }
+//         }
+//       );
+//       console.log("Yes Yes");
+//     }
+//   )
+// );
+
 let loginUserid;
 exports.home = function (home) {
   home.use(flash());
@@ -66,6 +103,20 @@ exports.home = function (home) {
   home.get("/", checkNotAuth.checkNotAuthenticated, (req, res) => {
     res.render("home", { Message: "" });
   });
+
+  // home.get(
+  //   "/auth/google",
+  //   passport.authenticate("google", { scope: ["profile"] })
+  // );
+
+  // home.get(
+  //   "/auth/google/dashboard",
+  //   passport.authenticate("google", { failureRedirect: "/" }),
+  //   function (req, res) {
+  //     // Successful authentication, redirect home.
+  //     res.redirect("/company_details");
+  //   }
+  // );
 
   home.post(
     "/",

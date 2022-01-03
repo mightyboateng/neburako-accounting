@@ -1,6 +1,6 @@
 <%- include('partials/header'); -%>
 
-       <div class="bankadvise-section">
+       <div class="tier2-section">
               <div class="container-fluid">
                      <div class="row">
                             <div class="col">
@@ -12,7 +12,7 @@
                                           <div class="container no-data">
                                                  <div class="row  ">
                                                         <div class="col-lg-12">
-                                                               <img src="/images/cover.png" alt="No data image">
+                                                               <img src="/images/no_data.jpg" alt="No data image">
                                                         </div>
                                                  </div>
                                           </div>
@@ -21,7 +21,7 @@
                                                  <!-- #####################################
                                                                Table
                                                  ####################################### -->
-                                                 <div class="container main-content">
+                                                 <div class="container">
                                                         <table class="table">
                                                                <thead>
                                                                       <tr>
@@ -32,6 +32,13 @@
                                                                              </th>
                                                                              <th scope="col">Amount <br><span
                                                                                            class="currency">(Gh₵)</span>
+                                                                             </th>
+                                                                             <th scope="col">
+                                                                                    <form action="/download_tier2"
+                                                                                           method="post">
+                                                                                           <input class="form-control"
+                                                                                                  type="month"
+                                                                                                  name="period">
                                                                              </th>
                                                                       </tr>
                                                                </thead>
@@ -57,8 +64,35 @@
                                                                                     </td>
                                                                              </tr>
                                                                              <% } %>
+                                                                                    <tr>
+                                                                                           <td> </td>
+                                                                                           <td> </td>
+                                                                                           <th scope="col"
+                                                                                                  class="text-primary">
+                                                                                                  Total</th>
+                                                                                           <th scope="col"
+                                                                                                  class="text-primary">
+                                                                                                  <%= TotalTier2 %>
+                                                                                           </th>
+                                                                                    </tr>
                                                                </tbody>
                                                         </table>
+
+                                                        <div class="container">
+                                                               <div class="row print-btn">
+                                                                      <div class="col ">
+                                                                             <button type="submit"
+                                                                                    class="btn bg-primary text-white">Print
+                                                                                    Tier 2
+                                                                                    Returns</button>
+                                                                             <!-- <a href="/download_tier2" type="button"
+                                                                                    class="btn bg-primary text-white">Print
+                                                                                    Tier 2 Returns
+                                                                             </a> -->
+                                                                      </div>
+                                                                      </form>
+                                                               </div>
+                                                        </div>
 
                                                  </div>
 

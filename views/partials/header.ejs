@@ -10,6 +10,9 @@
        <!-- CSS -->
        <link rel="stylesheet" href="/css/styles.css">
 
+       <!-- Favicon -->
+       <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
        <!-- Fontawesome Icons -->
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
               integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
@@ -20,10 +23,10 @@
 </head>
 
 <body>
-       <nav class="navbar navbar-expand-lg navbar-light bg-primary p-4">
+       <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top p-4">
               <div class="container-fluid">
                      <a class="navbar-brand" href="/">
-                            <img src="/images/cover.png" alt="logo">
+                            <img src="/images/neb_logo.jpeg" alt="logo">
                      </a>
                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -92,22 +95,32 @@
                                                         <%}%>
                                    </li>
                             </ul>
-                            <div class="action">
-                                   <div class="profile">
-                                          <img src="/images/cover.png" alt="">
+                            <% NavDetails.forEach(navDet=> { %>
+                                   <div class="action">
+                                          <div class="profile">
+                                                 <% if(navDet.image==='' ) { %>
+                                                        <img src="/images/profile.jpg" alt="user-image">
+                                                        <%} else {%>
+
+                                                               <img src="/images/uploaded_images/<%=navDet.image %>"
+                                                                      alt="user-image">
+                                                               <%}%>
+                                          </div>
+                                          <div class="menu">
+                                                 <h3>
+                                                        <%=navDet.company_name %> <br> <span>
+                                                                      <%=navDet.company_address %>
+                                                               </span>
+                                                 </h3>
+                                                 <ul>
+                                                        <li><i class="fas fa-user"></i><a href="/profile">Profile
+                                                                      Settings</a></li>
+                                                        <li><i class="fas fa-sign-out-alt"></i><a
+                                                                      href="logout">Logout</a></li>
+                                                 </ul>
+                                          </div>
                                    </div>
-                                   <div class="menu">
-                                          <h3>Company Name <br> <span>BOX KN 337, KANESHIE, ACCRA</span>
-                                          </h3>
-                                          <ul>
-                                                 <li><i class="fas fa-user"></i><a href="#">Profile
-                                                               Settings</a></li>
-                                                 <li><i class="fas fa-users"></i><a href="#">Contact
-                                                               Us</a></li>
-                                                 <li><i class="fas fa-sign-out-alt"></i><a href="logout">Logout</a></li>
-                                          </ul>
-                                   </div>
-                            </div>
+                                   <%})%>
                      </div>
               </div>
        </nav>
