@@ -11,9 +11,8 @@ const path = require("path");
 const userNavDetail = require("./user");
 
 let period;
-module.exports = function (backadvice) {
-  ///////// Bank Advice /////////
-  backadvice.get(
+module.exports = function (bankadvice) {
+  bankadvice.get(
     "/bankadvice",
     authenticated.checkAuthenticated,
     function (req, res) {
@@ -30,7 +29,7 @@ module.exports = function (backadvice) {
 
             connection.query(
               "Select * From employee_payroll_data where user_id = " + userId,
-              function (err, PayrollFound, fields) {
+              function (err, PayrollFound) {
                 if (err) {
                   console.log(err);
                 }
@@ -58,7 +57,7 @@ module.exports = function (backadvice) {
     }
   );
 
-  backadvice.post(
+  bankadvice.post(
     "/download_bank_advice",
     authenticated.checkAuthenticated,
     async (req, res) => {
@@ -166,7 +165,7 @@ module.exports = function (backadvice) {
     }
   );
 
-  backadvice.get(
+  bankadvice.get(
     "/bankadvice_doc",
     authenticated.checkAuthenticated,
     (req, res) => {

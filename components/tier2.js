@@ -1,7 +1,6 @@
 const connection = require("./database");
 const authenticated = require("./home");
 const fomatter = require("./controllers");
-const currentDate = require("./date_handler");
 
 const fs = require("fs");
 const utils = require("util");
@@ -14,7 +13,6 @@ const userNavDetail = require("./user");
 
 let period;
 module.exports = function (tier2) {
-  ///////// Tier 2 Return /////////
   tier2.get("/tier2", authenticated.checkAuthenticated, function (req, res) {
     userNavDetail
       .userNavbarProfile(req.user)
@@ -125,7 +123,7 @@ module.exports = function (tier2) {
                   };
                   getTemplateHtml()
                     .then(async (res) => {
-                      console.log("Compiing the template with handlebars");
+                      console.log("Compiling the template with handlebars");
                       const template = hb.compile(res, { strict: true });
                       const result = template(data);
                       const html = result;

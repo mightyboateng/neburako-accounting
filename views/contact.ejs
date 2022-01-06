@@ -34,18 +34,29 @@
                      </div>
 
                      <div class="contactForm">
-                            <form action="">
+                            <form action="/contact" method="post">
+                                   <div class="row error-message text-center w-100 bg-info text-danger">
+                                          <div class="col">
+                                                 <% if (message !=='' ) { %>
+                                                        <h5>
+                                                               <%= message %>
+                                                        </h5>
+                                                        <% } else{%>
+
+                                                               <%}%>
+                                          </div>
+                                   </div>
                                    <h2>Send Message</h2>
                                    <div class="inputBox">
-                                          <input type="text" name="" required>
+                                          <input type="text" name="user_fullName" required>
                                           <span>Full Name</span>
                                    </div>
                                    <div class="inputBox">
-                                          <input type="email" name="" required>
+                                          <input type="email" name="user_email" required>
                                           <span>Email</span>
                                    </div>
                                    <div class="inputBox">
-                                          <textarea name="" rows="8" required></textarea>
+                                          <textarea name="user_message" rows="8" required></textarea>
                                           <span>Type your message.....</span>
                                    </div>
                                    <div class="inputBox">

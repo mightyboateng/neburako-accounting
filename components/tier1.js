@@ -1,7 +1,6 @@
 const connection = require("./database");
 const authenticated = require("./home");
 const fomatter = require("./controllers");
-const currentDate = require("./date_handler");
 const fs = require("fs");
 const utils = require("util");
 const readFile = utils.promisify(fs.readFile);
@@ -151,7 +150,6 @@ module.exports = function (tier1) {
                 res.render("print_tier1", {
                   TotalTier1: fomatter(totalTier1),
                   EmployeePayrollData: PayrollFound,
-                  CurrentDate: currentDate(),
                   Period: period,
                   CompanyName: companyName,
                   CompanyAddress: companyAddress,

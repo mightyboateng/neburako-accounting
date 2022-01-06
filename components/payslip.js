@@ -1,9 +1,6 @@
 const connection = require("./database");
 const fomatter = require("./controllers");
 const currentDate = require("./date_handler");
-const ejs = require("ejs");
-const pdf_ejs = require("html-pdf");
-const pdf_creator = require("pdf-creator-node");
 const fs = require("fs");
 const path = require("path");
 const url = require("url");
@@ -186,71 +183,80 @@ module.exports = function (payslip) {
 
               netPay = totalEarnings - totalDeductions;
 
-              async function getTemplateHtml() {
-                console.log("Loading template file in memory");
-                try {
-                  const invoicePath = path.join(
-                    __dirname,
-                    "..",
-                    "views",
-                    "print_payslip.html"
-                  );
+              const sql_user = "SELECT name FROM user_login WHERE email= ?";
+              connection.query(sql_user, req.user, (err, foundUser) => {
+                if (err) throw err;
 
-                  return await readFile(invoicePath, "utf8");
-                } catch (err) {
-                  return Promise.reject("Could not load html template");
+                async function getTemplateHtml() {
+                  console.log("Loading template file in memory");
+                  try {
+                    const invoicePath = path.join(
+                      __dirname,
+                      "..",
+                      "views",
+                      "print_payslip.html"
+                    );
+
+                    return await readFile(invoicePath, "utf8");
+                  } catch (err) {
+                    return Promise.reject("Could not load html template");
+                  }
                 }
-              }
 
-              async function generatePdf() {
-                let data = {
-                  totalEarns: fomatter(totalEarnings),
-                  Period: period,
-                  CurrentDate: currentDate(),
-                  totalDeductions: fomatter(totalDeductions),
-                  netPay: fomatter(netPay),
-                  Emp: EmployeeFound,
-                };
-                getTemplateHtml()
-                  .then(async (res) => {
-                    // Now we have the html code of our template in res object
-                    // you can check by logging it on console
-                    // console.log(res)
-                    console.log("Compiing the template with handlebars");
-                    const template = hb.compile(res, { strict: true });
-                    // we have compile our code with handlebars
-                    const result = template(data);
-                    // We can use this to add dyamic data to our handlebas template at run time from database or API as per need. you can read the official doc to learn more https://handlebarsjs.com/
-                    const html = result;
-                    // we are using headless mode
-                    const browser = await puppeteer.launch();
-                    const page = await browser.newPage();
-                    // We set the page content as the generated html by handlebars
-                    await page.setContent(html);
-                    // We use pdf function to generate the pdf in the same folder as this file.
-                    await page.pdf({
-                      path: req.user + "file.pdf",
-                      format: "A4",
-                      printBackground: true,
+                async function generatePdf() {
+                  let data = {
+                    totalEarns: fomatter(totalEarnings),
+                    Period: period,
+                    UserName: foundUser[0].name,
+                    CurrentDate: currentDate(),
+                    totalDeductions: fomatter(totalDeductions),
+                    netPay: fomatter(netPay),
+                    Emp: EmployeeFound,
+                  };
+                  getTemplateHtml()
+                    .then(async (res) => {
+                      // Now we have the html code of our template in res object
+                      // you can check by logging it on console
+                      // console.log(res)
+                      console.log("Compiing the template with handlebars");
+                      const template = hb.compile(res, {
+                        strict: true,
+                      });
+                      // we have compile our code with handlebars
+                      const result = template(data);
+                      // We can use this to add dyamic data to our handlebas template at run time from database or API as per need. you can read the official doc to learn more https://handlebarsjs.com/
+                      const html = result;
+                      // we are using headless mode
+                      const browser = await puppeteer.launch();
+                      const page = await browser.newPage();
+                      // We set the page content as the generated html by handlebars
+                      await page.setContent(html);
+                      // We use pdf function to generate the pdf in the same folder as this file.
+                      await page.pdf({
+                        path: req.user + "file.pdf",
+                        format: "A4",
+                        printBackground: true,
+                      });
+                      await browser.close();
+                      console.log("PDF Generated");
+                    })
+                    .catch((err) => {
+                      console.error(err);
                     });
-                    await browser.close();
-                    console.log("PDF Generated");
-                  })
-                  .catch((err) => {
-                    console.error(err);
-                  });
-              }
+                }
 
-              generatePdf();
+                generatePdf();
 
-              res.render("print1_payslip", {
-                Period: period,
-                CurrentDate: currentDate(),
-                EmployeePayrollData: EmployeeFound,
-                TotalEarns: fomatter(totalEarnings),
-                TotalDeducts: fomatter(totalDeductions),
-                NetPay: fomatter(netPay),
-                NavDetails: userDetails,
+                res.render("print1_payslip", {
+                  Period: period,
+                  UserName: foundUser[0].name,
+                  CurrentDate: currentDate(),
+                  EmployeePayrollData: EmployeeFound,
+                  TotalEarns: fomatter(totalEarnings),
+                  TotalDeducts: fomatter(totalDeductions),
+                  NetPay: fomatter(netPay),
+                  NavDetails: userDetails,
+                });
               });
             }
           );

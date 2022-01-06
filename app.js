@@ -1,10 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const ejs = require("ejs");
-const bodyParser = require("body-parser");
-const path = require("path");
-const register = require("./components/register");
+// const ejs = require("ejs");
+// const bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +18,8 @@ registration.register(app);
 require(__dirname + "/components/company_details")(app);
 
 require(__dirname + "/components/profile")(app);
+
+require(__dirname + "/components/contact")(app);
 
 require(__dirname + "/components/dashboard")(app);
 require(__dirname + "/components/payroll")(app);
@@ -38,14 +38,10 @@ app.get("/services", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", { message: "" });
 });
 
-app.post("/contact", (req, res) => {
-  res.redirect("/contact");
-});
-
-const port = 3300;
+const port = 3500;
 app.listen(port, function () {
   console.log("Server started on port " + port + " ............");
 });

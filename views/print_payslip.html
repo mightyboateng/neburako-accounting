@@ -70,6 +70,10 @@
        .new-list {
               color: red;
        }
+
+       .prepared-name {
+              text-transform: uppercase;
+       }
 </style>
 
 <body style="background: darkgray">
@@ -79,9 +83,9 @@
                                           Section 1
                      ############################################## -->
                      <section class="top-content bb d-flex justify-content-between">
-                            <div class="logo">
+                            <!-- <div class="logo">
                                    <img class="img-fluid" src="/public/images/cover.png" alt="Company-logo">
-                            </div>
+                            </div> -->
                             <div class="top-center">
                                    <p>Payslip</p>
                             </div>
@@ -262,8 +266,8 @@
                                    <div class="col-6">
                                           <p>PREPARED BY;</p>
                                    </div>
-                                   <div class="col-6">
-                                          <p>NANA EBURAKO</p>
+                                   <div class="col-6 prepared-name">
+                                          <p>{{UserName}}</p>
                                    </div>
                             </div>
                             <!-- DESIGNATION by -->
@@ -291,7 +295,7 @@
                                           <p>DATE</p>
                                    </div>
                                    <div class="col-6">
-                                          <p> 2nd December, 2021</p>
+                                          <p> {{CurrentDate}}</p>
                                    </div>
                             </div>
                      </section>
