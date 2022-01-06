@@ -41,10 +41,6 @@ app.get("/contact", (req, res) => {
   res.render("contact", { message: "" });
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-app.listen(port, function () {
+app.listen(process.env.PORT || 3500, function () {
   console.log("Server started on port " + port + " ............");
 });
