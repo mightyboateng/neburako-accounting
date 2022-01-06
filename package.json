@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "sass --watch scss:public/css",
-    "start": "nodemon app.js"
+    "compile:sass": "sass --watch scss:public/css"
   },
   "keywords": [
     "accounting",
