@@ -41,6 +41,7 @@ app.get("/contact", (req, res) => {
   res.render("contact", { message: "" });
 });
 
-app.listen(process.env.PORT || 3500, function () {
+const port = 3500;
+app.listen(process.env.PORT || port, function () {
   console.log("Server started on port " + port + " ............");
 });
